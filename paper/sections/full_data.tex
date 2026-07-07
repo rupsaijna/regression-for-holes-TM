@@ -13,9 +13,9 @@ M00 ($1.745$) worse than both M20 ($1.657$) and the 30\%-hole student ($1.736$),
 data hurts. The structured holes happen to remove points that harm generalization, and
 \texttt{force\_ii} beats the full model by $+0.185$ (5/6 seeds). This is a ``less-is-more''
 case---an existence proof that on some datasets less, better-spaced data generalizes
-better---though the honest reading is that the full model is a weak baseline here rather
-than that distillation beat an honest ceiling. On california and energy, where the full
-model is a genuine ceiling, it wins comfortably and no mode beats M00.
+better---here because the full model is a weak baseline rather than because distillation
+surpassed a strong ceiling. On california and energy, where the full model is a genuine
+ceiling, it wins comfortably and no mode beats M00.
 
 \begin{table*}[t]
 \centering
@@ -33,8 +33,8 @@ energy     & 0.959 & ${\sim}1.24$ \\
 \end{tabular}
 \end{table*}
 
-We caution that the robust ``less-is-more'' datasets in our broader panel are
-\texttt{nyse\_log} ($+4.5\%$), \texttt{realestate} ($+2.8\%$), and \texttt{metro}
-($+0.4\%$); airquality's effect is real but seed-fragile (it flips at 4 seeds) and energy
-is firmly the opposite (M00 $18\%$ better). ``More data can hurt'' holds on a few genuinely
-heterogeneous datasets, not universally.
+The robust ``less-is-more'' datasets in our broader panel are \texttt{nyse\_log}
+($+4.5\%$), \texttt{realestate} ($+2.8\%$), and \texttt{metro} ($+0.4\%$); airquality's
+effect is real but seed-fragile (it flips at 4 seeds) and energy is firmly the opposite
+(M00 $18\%$ better). ``More data can hurt'' thus holds on a few genuinely heterogeneous
+datasets, not universally.

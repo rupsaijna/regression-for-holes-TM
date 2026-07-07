@@ -38,11 +38,9 @@ The sign is consistently negative: the more a dataset's error is governed by spa
 less distillation helps. On an $n\!\geq\!100$ subset (ten datasets) the
 \texttt{force\_ii\_tmag} result tightens (\texttt{spc\_err\_strength} $-0.76$, $p=0.011$)
 and a whole cluster of spacing/spread metrics turns negative (spread $-0.62$,
-\texttt{nn1\_mean} $-0.57$, \texttt{min\_pairwise} $-0.57$). We report honest caveats:
-\texttt{het\_global\_cv} was a small-panel artifact ($-0.81$ at $n=8$, not significant at
-$n=12$); some modes partly track dataset size/dimensionality rather than spacing; the
-strong, robust coupling is specifically \texttt{force\_ii\_tmag}, with the other modes
-directionally consistent but noisier at $n=10$--$12$.
+\texttt{nn1\_mean} $-0.57$, \texttt{min\_pairwise} $-0.57$). The robust coupling is
+specifically \texttt{force\_ii\_tmag}; the other modes are directionally consistent but
+weaker at $n=10$--$12$ (see Section~\ref{sec:limitations}).
 
 \subsubsection{Per-region: where distillation acts}
 
