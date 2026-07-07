@@ -1,9 +1,0 @@
-numpy<2          # tmu is incompatible with numpy 2.x (np.uint32(~0) overflow)
-scipy
-scikit-learn
-matplotlib
-pandas
-torch
-tmu
-ucimlrepo        # UCI datasets (ccpp, energy, autompg, realestate)
-tqdm             # progress bars
