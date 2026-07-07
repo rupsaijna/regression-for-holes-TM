@@ -1,35 +1,36 @@
-\section{Teacher accuracy does not predict benefit}
+\subsection{Teacher accuracy does not predict benefit}
 \label{sec:teacher_edge}
 
 A natural gate for distillation would be ``distill only when the teacher is more accurate
-than the student.'' We show this gate is wrong. Measuring the teacher's standalone
-\emph{edge}---$\mathrm{RMSE}(\text{unguided}) - \mathrm{RMSE}(\text{M20})$ on the same
-held-out test---against whether guidance helps (Table~\ref{tab:edge}) reveals that
-\textbf{energy, the dataset with the largest teacher edge ($+17\%$, teacher beats the
-student in all 6 seeds), is the dataset where every guidance mode hurts most}. ccpp has a
-smaller edge ($+6\%$) yet benefits across all modes. Across the four datasets the
-edge$\leftrightarrow$benefit Spearman correlation is only $\approx +0.40$ (weakly
-positive, $n=4$, not predictive), with energy the off-diagonal point that breaks any
-usable threshold.
+than the student.'' We show this gate is wrong. We measure the teacher's standalone
+\textit{edge}---$\mathrm{RMSE}(\text{unguided}) - \mathrm{RMSE}(\text{M20})$ on the same
+held-out test---against whether guidance helps (Table~\ref{tab:edge}). Energy, the dataset
+with the largest teacher edge ($+17.1\%$; the teacher M20 beats the student in all 6
+seeds), is the dataset where every guidance mode hurts most. ccpp has a smaller edge
+($+6.2\%$) yet benefits across all modes. Across the four anchor datasets the
+edge--benefit Spearman correlation is only $\approx\!+0.40$ (weakly positive, $n=4$, not
+predictive), with energy the off-diagonal point that breaks any usable threshold. This is
+what justifies labelling energy a ``bad'' teacher despite its high accuracy: the label
+tracks the distillation outcome, not the standalone edge.
 
 \begin{table*}[t]
 \centering
-\caption{Teacher edge vs.\ benefit (6 seeds).}
+\caption{Teacher edge vs.\ benefit (6 seeds). Edge $=\mathrm{RMSE}(\text{unguided})-\mathrm{RMSE}(\text{M20})$.}
 \label{tab:edge}
 \begin{tabular}{lrrrrl}
 \toprule
-dataset & unguided & M20 & edge & edge \% & guidance helps? \\
+dataset & unguided & M20 & edge & edge \% & helps? \\
 \midrule
-ccpp       & 5.202 & 4.879 & $+0.323$ & $+6.2\%$  & yes (all modes) \\
+ccpp       & 5.202 & 4.879 & $+0.323$ & $+6.2\%$  & yes (all) \\
 airquality & 1.736 & 1.657 & $+0.078$ & $+4.5\%$  & weakly \\
 california & 0.622 & 0.614 & $+0.007$ & $+1.2\%$  & slightly hurts \\
-energy     & 1.222 & 1.013 & $\mathbf{+0.210}$ & $\mathbf{+17.1\%}$ & hurts badly (all) \\
+energy     & 1.222 & 1.013 & $\mathbf{+0.210}$ & $\mathbf{+17.1\%}$ & hurts \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-The reason is that aggregate test RMSE is a \emph{global} summary, whereas our
-distillation injects the teacher's \emph{per-sample} error direction and magnitude into
-the student's clause feedback. A globally smoother teacher can still deliver per-sample
-nudges that conflict with what the masked-region samples need. This pushes the search for
-a real predictor of benefit toward the \emph{structure of the data itself}.
+The reason is that aggregate test RMSE is a global summary, whereas our distillation
+injects the teacher's per-sample error direction and magnitude into the student's clause
+feedback. A globally smoother teacher can still deliver per-sample nudges that conflict
+with what the masked-region samples need. This pushes the search for a real predictor of
+benefit toward the structure of the data itself (Section~\ref{sec:spacing}).

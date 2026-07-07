@@ -1,78 +1,114 @@
-\section{Method}
+\section{Data and Methodology}
 \label{sec:method}
 
-\subsection{Teacher-guided clause feedback}
+\subsection{Datasets}
+\label{sec:data}
 
-Our teacher is a \emph{frozen} RegressionTM trained on less-masked data. During the
-student's \texttt{fit}, at each training sample we optionally (with probability
+We evaluate on a panel of twelve public regression datasets chosen to decouple two
+properties that are usually entangled: how accurate the teacher is, and how the data is
+geometrically distributed. The panel spans four sources---the \texttt{scikit-learn}
+California Housing set, the UCI Machine Learning Repository (including its time-series
+regression subset), the Sutanoy public regression collection, and a Kaggle NYSE
+dataset---and a deliberately wide range of prediction objectives.
+
+Four datasets serve as anchors for the per-region analysis, chosen to span teacher
+quality. \textbf{ccpp} (UCI Combined Cycle Power Plant, $n\!\approx\!9.6$k) predicts a
+power plant's net electrical output from ambient temperature, pressure, humidity and
+exhaust vacuum; the relationship is nearly linear ($R^2\!\approx\!0.93$), the cleanest
+large set in the panel. \textbf{airquality} (UCI Air Quality, $n\!\approx\!6.9$k) predicts
+true benzene concentration from metal-oxide gas-sensor responses, a moderately
+unevenly-spaced time series. \textbf{california} ($n\!\approx\!20.6$k) predicts median
+house value from eight census predictors. \textbf{energy} (UCI Energy Efficiency,
+$n\!=\!768$) predicts a building's heating load from eight shape parameters.
+
+The broader panel adds smaller near-linear sets (\textbf{autompg}, \textbf{realestate},
+and the textbook \textbf{mortality} and \textbf{bloodfat}), and unevenly-spaced
+time-series sets whose test points are concentrated or bimodal in feature space:
+\textbf{metro} (hourly interstate traffic volume, the most unevenly-spaced set in the
+panel), \textbf{beijing} (hourly PM2.5), and \textbf{nyse}/\textbf{nyse\_log} (next-day
+trading volume, whose raw target is heavy-tailed---spanning $10^2$ to $10^8$
+shares---while \texttt{nyse\_log} is its log-transformed, better-behaved control). These
+objective differences---from smooth physical outputs to heavy-tailed financial volume and
+bimodal traffic---mean the datasets differ not only in teacher quality but in spacing
+structure, which is exactly the axis the study probes. All loaders keep numeric features
+only, drop missing rows, and use a fixed per-dataset train/test split; the large
+time-series sets are strided down to keep the CPU Tsetlin Machine tractable.
+
+\subsection{Teacher-guided clause feedback}
+\label{sec:tgcf}
+
+Our teacher is a frozen RegressionTM trained on less-masked data. During the student's
+\texttt{fit}, at each training sample we optionally (with probability
 $p_{\text{teacher}}$) let the teacher's encoded prediction adjust the student's
-per-sample error \emph{before the Type~I/Type~II dispatch}:
+per-sample error before the Type~I/Type~II dispatch:
 
 \begin{itemize}
-  \item If the teacher and student errors lie on the \textbf{same side} of the encoded
-    target, we blend the student's error toward the teacher's by a factor $f$ (a
-    ``same-side blend''). This sharpens the update in a direction both models agree on.
-  \item If they lie on \textbf{opposite sides}, the baseline (v1) ignores the teacher
-    there ($f_{\text{opposite}}=0$); our later variants instead \emph{act} on these
-    disagreement samples in controlled ways.
+  \item If the teacher and student errors lie on the same side of the encoded target, we
+    blend the student's error toward the teacher's by a factor $f$ (a ``same-side
+    blend''), reinforcing the update in a direction both models agree on.
+  \item If they lie on opposite sides, the baseline ignores the teacher there
+    ($f_{\text{opposite}}=0$); our variants instead act on these disagreement samples in
+    controlled ways.
 \end{itemize}
 
 Because the intervention modifies $\texttt{prediction\_error}$ before dispatch, the
-teacher influences \emph{which} feedback type fires and \emph{how large} the update
-is---i.e.\ it steers the clause-level learning signal directly, never the output. All
-variants reduce bit-for-bit to the unmodified RegressionTM when the teacher is disabled,
-which we verify by reproducing a \texttt{uniform} (baseline) arm identically across
-experiments.
+teacher influences which feedback type fires and how large the update is---it steers the
+clause-level learning signal directly, never the output. All variants reduce bit-for-bit
+to the unmodified RegressionTM when the teacher is disabled, which we verify by
+reproducing the baseline arm identically across experiments.
 
 \subsection{The family of mechanisms}
+\label{sec:family}
 
-We develop the mechanisms as a sequence of small, versioned modifications (each a copy
-of the regressor, original untouched):
+We develop the mechanisms as a sequence of small, versioned modifications. Each named
+mode below corresponds to a column in the results tables, cited here for reference.
 
-\begin{description}
-  \item[Same-side blend (v1).] The base teacher-guided update described above.
-  \item[Adaptive trigger.] Instead of a uniform firing probability, fire the teacher
-    preferentially where it is most informative: a budget-matched per-epoch probability
-    $p_e = \operatorname{clip}(p \cdot d_e / \operatorname{mean}(d_e), 0, 1)$, with $d_e$
-    either the teacher$\leftrightarrow$student \emph{disagreement}
-    (\texttt{adapt\_disagree}) or the student's \emph{error} (\texttt{adapt\_error}).
-  \item[Opposite-side type override (v2).] On opposite-side (disagreement) samples,
-    override the feedback \emph{type} while keeping the student's error \emph{magnitude}:
-    \texttt{force\_ii} always fires the bounded Type~II; \texttt{teacher\_sign} routes
-    the type by the teacher's error sign (Type~II if the teacher over-predicts, Type~I if
-    it under-predicts).
-  \item[Stability fixes (v3).] \texttt{teacher\_sign\_ii} drops the runaway-prone Type~I
-    branch (Type~II only when the teacher over-predicts, no-op otherwise).
-    \texttt{teacher\_sign\_tmag} keeps the full teacher-sign routing but sources
-    \texttt{update\_p} from the \emph{teacher's} frozen, bounded error instead of the
-    student's.
-  \item[Teacher-bounded magnitude, generalized (v4).] \texttt{force\_ii\_tmag} combines
-    forced Type~II with the teacher-bounded magnitude. \texttt{sameside\_tmag} leaves the
-    opposite-side branch untouched but has the \emph{same-side} updates take the teacher's
-    magnitude.
-\end{description}
+\begin{itemize}
+  \item \textbf{Baseline blend} (referred to as \texttt{uniform} in
+    Tables~\ref{tab:adaptive}--\ref{tab:stability}): the teacher fires at a fixed
+    probability $p_{\text{teacher}}$ on same-side samples with opposite-side samples
+    ignored; this is the same-side blend and the reference arm all gains are measured
+    against.
+  \item \textbf{Adaptive trigger} (\texttt{adapt\_disagree}, \texttt{adapt\_error} in
+    Table~\ref{tab:adaptive}): rather than a uniform firing probability, fire the teacher
+    preferentially where it is most informative, via a budget-matched per-epoch
+    probability $p_e = \operatorname{clip}(p \cdot d_e / \operatorname{mean}(d_e), 0, 1)$,
+    with $d_e$ either the teacher--student disagreement or the student's error.
+  \item \textbf{Opposite-side type override} (\texttt{force\_ii}, \texttt{teacher\_sign}
+    in Tables~\ref{tab:tmag} and~\ref{tab:stability}): on disagreement samples, override
+    the feedback type while keeping the student's error magnitude---\texttt{force\_ii}
+    always fires the bounded Type~II, whereas \texttt{teacher\_sign} routes the type by the
+    teacher's error sign.
+  \item \textbf{Stability fixes} (\texttt{teacher\_sign\_ii}, \texttt{teacher\_sign\_tmag}
+    in Table~\ref{tab:stability}): \texttt{teacher\_sign\_ii} drops the runaway-prone
+    Type~I branch; \texttt{teacher\_sign\_tmag} keeps the routing but sources the update
+    magnitude from the teacher's frozen, bounded error.
+  \item \textbf{Teacher-bounded magnitude} (\texttt{force\_ii\_tmag}, \texttt{sameside\_tmag}
+    in Table~\ref{tab:tmag}): \texttt{force\_ii\_tmag} combines forced Type~II with the
+    teacher-bounded magnitude, while \texttt{sameside\_tmag} leaves the opposite-side
+    branch untouched but has the same-side updates take the teacher's magnitude.
+\end{itemize}
 
 \subsection{Masked-distillation protocol}
+\label{sec:protocol}
 
-To create a controlled scarcity setting we carve \textbf{nested structured holes} into
-the training set using a $k$-NN procedure: the teacher is trained on an 80\%-kept set (a
-20\% structured hole), and the student on a \emph{nested} 70\%-kept set (a 30\% hole)
-contained within the teacher's. Crucially, the guided student and the unguided baseline
-train on the \emph{same} 30\%-hole data; the only difference is whether the teacher is
-active. All models are evaluated on a \emph{fixed, unmasked} held-out TEST set. This
-isolates the effect of distillation from any change in the student's own data.
+To create a controlled scarcity setting we carve nested structured holes into the training
+set using a $k$-NN procedure: the teacher is trained on an 80\%-kept set (a 20\% structured
+hole), and the student on a nested 70\%-kept set (a 30\% hole) contained within the
+teacher's. The guided student and the unguided baseline train on the same 30\%-hole data;
+the only difference is whether the teacher is active. All models are evaluated on a fixed,
+unmasked held-out test set, isolating the effect of distillation from any change in the
+student's own data.
 
 \subsection{Experimental setup}
 \label{sec:setup}
 
 Unless noted, we use $T=5000$, $1000$ clauses, specificity $s=2.75$, same-side blend
 $f=0.75$, $p_{\text{teacher}}=0.5$, $100$ epochs, and $6$ seeds (42--47). Comparisons are
-\textbf{paired by seed}. Our primary metric is improvement over the unguided student,
+paired by seed. Our primary metric is improvement over the unguided student,
 $\texttt{impr} = \mathrm{RMSE}(\text{unguided}) - \mathrm{RMSE}(\text{guided})$ (positive
-$=$ distillation helps), with paired $t$-statistics across seeds. We anchor most analyses
-on four datasets chosen to span teacher quality---\textbf{ccpp} (teacher clearly helps),
-\textbf{airquality} (weak/marginal), \textbf{california} (neutral to slightly harmful),
-and \textbf{energy} (harmful)---and broaden to a 12-dataset panel for the dataset-level
-correlation study (Section~\ref{sec:spacing}). We denote the full-data (0\%-hole) model
-\textbf{M00} and the teacher (20\%-hole) model \textbf{M20}, used respectively as an
-upper-reference ceiling and as the standalone-teacher baseline.
+$=$ distillation helps), with paired $t$-statistics across seeds. Most analyses use the
+four anchor datasets; the dataset-level correlation study (Section~\ref{sec:spacing})
+broadens to the full twelve. We denote the full-data (0\%-hole) model \textbf{M00} and the
+teacher (20\%-hole) model \textbf{M20}, used respectively as an upper-reference ceiling and
+as the standalone-teacher baseline.

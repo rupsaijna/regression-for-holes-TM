@@ -1,16 +1,31 @@
-\section{Distillation is a sharpener, not a fixer}
+\section{Results and Discussion}
+\label{sec:results}
+
+Throughout, we label each anchor dataset by its \textit{distillation outcome}---whether
+guidance helps the student, not how accurate the teacher is in isolation. We call ccpp a
+\textbf{good} teacher (guidance helps across all modes), airquality a \textbf{weak} teacher
+(marginal help), california a \textbf{neutral} teacher (negligible-to-slightly-harmful),
+and energy a \textbf{bad} teacher (guidance consistently hurts). As
+Section~\ref{sec:teacher_edge} shows, this ordering does \textit{not} follow the teacher's
+standalone accuracy. For scale, the unguided 30\%-hole baseline RMSEs against which the
+\texttt{impr} values are measured are $5.20$ (ccpp), $1.74$ (airquality), $0.62$
+(california) and $1.22$ (energy); a gain of $+0.40$ on ccpp is thus an $\approx\!8\%$
+error reduction.
+
+\subsection{Distillation modulates, rather than corrects, the teacher's signal}
 \label{sec:sharpener}
 
-Our first structural finding is that teacher guidance \emph{amplifies} the teacher's
-existing effect rather than correcting for its weaknesses.
+Our first structural finding is that teacher guidance acts as a multiplicative gain on the
+teacher's existing effect: it amplifies whatever signal the teacher carries rather than
+correcting for the teacher's weaknesses.
 
 \paragraph{Adaptive triggering.}
 Concentrating the teacher's action where it disagrees with the student, or where the
-student errs, magnifies the outcome in \emph{both} directions (Table~\ref{tab:adaptive}).
-On the good-teacher dataset ccpp, \texttt{adapt\_error} yields the single best
-distillation result in the whole arc ($+0.496$, $t=4.64$, vs the uniform trigger's
-$+0.360$). But on the harmful datasets the same concentration makes things significantly
-worse (energy \texttt{adapt\_error} $-0.372$, $t=-5.34$; gain vs uniform $t=-6.25$). The
+student errs, magnifies the outcome in both directions (Table~\ref{tab:adaptive}). On the
+good teacher ccpp, \texttt{adapt\_error} yields the single best distillation result in our
+study ($+0.496$, $t=4.64$, vs the \texttt{uniform} trigger's $+0.360$). But on the harmful
+datasets the same concentration makes things significantly worse (energy
+\texttt{adapt\_error} $-0.372$, $t=-5.34$; gain vs \texttt{uniform} $t=-6.25$). The
 hoped-for ``focus on disagreement to avoid hurting easy points'' does not occur---on a
 bad-teacher dataset the disagreement region is exactly where the teacher is most wrong.
 
@@ -23,25 +38,25 @@ bad-teacher dataset the disagreement region is exactly where the teacher is most
 \toprule
 dataset & teacher & uniform & adapt\_disagree & adapt\_error \\
 \midrule
-ccpp       & helps    & $+0.360$ & $+0.322$ & $\mathbf{+0.496}$ \\
-airquality & weak     & $+0.078$ & $+0.096$ & $+0.147$ \\
-california & neutral  & $-0.013$ & $-0.029$ & $-0.062$ \\
-energy     & harmful  & $-0.062$ & $-0.277$ & $\mathbf{-0.372}$ \\
+ccpp       & good    & $+0.360$ & $+0.322$ & $\mathbf{+0.496}$ \\
+airquality & weak    & $+0.078$ & $+0.096$ & $+0.147$ \\
+california & neutral & $-0.013$ & $-0.029$ & $-0.062$ \\
+energy     & bad     & $-0.062$ & $-0.277$ & $\mathbf{-0.372}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\paragraph{Bounded magnitude.}
+\paragraph{Teacher-bounded magnitude.}
 The same behavior reappears when the update magnitude is sourced from the teacher. The
-cleanest A/B is \texttt{force\_ii} $\rightarrow$ \texttt{force\_ii\_tmag} (identical
-forced Type~II; only the magnitude source changes from student to teacher), shown in
-Table~\ref{tab:tmag}. Teacher-bounded magnitude amplifies a good teacher (ccpp $+0.431$,
-$t=3.52$, 6/6 seeds---the best good-teacher result of the arc) and caps a bad teacher's
-harm (energy $-0.237 \rightarrow -0.116$), but \emph{backfires on a marginal teacher}
-(airquality's $+0.175$ win flips to $-0.140$). The airquality win specifically came from
-using the \emph{student's} magnitude on disagreement samples; over-trusting a teacher
-that is only weakly better erases it. \texttt{sameside\_tmag} tells the same story from
-the other side: it is the gentlest bad-teacher mode of the arc (energy $-0.013$,
+cleanest comparison is \texttt{force\_ii} against \texttt{force\_ii\_tmag}
+(Table~\ref{tab:tmag}): identical forced Type~II, with only the magnitude source changing
+from student to teacher. Sourcing the magnitude from the teacher amplifies the good teacher
+(ccpp $+0.251 \rightarrow +0.431$, $t=3.52$, 6/6 seeds---our best good-teacher result) and
+caps the bad teacher's harm (energy $-0.237 \rightarrow -0.116$), but it backfires on the
+marginal teacher (airquality's $+0.175$ win reverses to $-0.140$). The airquality win came
+specifically from using the student's magnitude on disagreement samples; over-trusting a
+teacher that is only weakly better erases it. \texttt{sameside\_tmag} tells the same story
+from the other side: it is the gentlest mode on the bad teacher (energy $-0.013$,
 essentially no harm) yet worsens the neutral california case.
 
 \begin{table}[t]
@@ -49,20 +64,20 @@ essentially no harm) yet worsens the neutral california case.
 \footnotesize
 \caption{Effect of teacher-bounded magnitude, mean \texttt{impr}.}
 \label{tab:tmag}
-\begin{tabular}{llrr l}
+\begin{tabular}{llrr}
 \toprule
-dataset & teacher & \texttt{force\_ii} & \texttt{force\_ii\_tmag} & effect \\
+dataset & teacher & \texttt{force\_ii} & \texttt{force\_ii\_tmag} \\
 \midrule
-ccpp       & good    & $+0.251$ & $\mathbf{+0.431}$ & much better \\
-airquality & weak    & $\mathbf{+0.175}$ & $\mathbf{-0.140}$ & win destroyed \\
-california & neutral & $-0.015$ & $-0.017$ & $\approx$ same \\
-energy     & bad     & $-0.237$ & $-0.116$ & harm $\approx$ halved \\
+ccpp       & good    & $+0.251$ & $\mathbf{+0.431}$ \\
+airquality & weak    & $\mathbf{+0.175}$ & $-0.140$ \\
+california & neutral & $-0.015$ & $-0.017$ \\
+energy     & bad     & $-0.237$ & $-0.116$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The consequence is that \textbf{there is no single best mode}: \texttt{force\_ii\_tmag}/
-\texttt{sameside\_tmag} for a known-good teacher, plain \texttt{force\_ii} for a marginal
-one, \texttt{sameside\_tmag}/\texttt{uniform} to minimize harm when the teacher may be
-bad. Every mechanism scales the teacher's signal; none supplies signal a bad teacher
-lacks.
+The consequence is that no single mode is best everywhere:
+\texttt{force\_ii\_tmag}/\texttt{sameside\_tmag} suit a known-good teacher, plain
+\texttt{force\_ii} a marginal one, and \texttt{sameside\_tmag}/\texttt{uniform} minimize
+harm when the teacher may be bad. Every mechanism scales the teacher's signal; none
+supplies signal a bad teacher lacks.

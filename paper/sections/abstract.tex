@@ -1,19 +1,15 @@
 Regression with the Tsetlin Machine (RegressionTM) is interpretable but typically
 requires densely sampled training data, raising the question of how well it can be
 trained when data is scarce. We study teacher--student knowledge distillation for
-RegressionTM, asking not only whether a frozen, better-informed teacher can improve a
-data-starved student, but where and why. Rather than matching outputs, our teacher acts
-inside the student's training loop: at each sample it adjusts the student's per-sample
-error before the Type~I/Type~II feedback decision, steering the clause-level update
-directly. We develop a family of such mechanisms---a same-side error blend, adaptive
-triggering, opposite-side feedback-type overrides, and teacher-bounded update
-magnitudes---and evaluate them under a masked-distillation protocol in which nested
-structured holes carve progressively sparser training sets, paired by seed on held-out
-data across datasets spanning the full range of teacher quality. We find that every
-mechanism scales whatever signal the teacher carries and none rescues a poor teacher;
-that teacher accuracy does not predict benefit; that a 70\%-data guided student can match
-or even beat a full-data model where extra data is harmful; and that data spacing and
-density, not teacher accuracy, govern benefit. Distillation in RegressionTM is thus a
-predominantly \emph{global} reshaping of the learned function---helping when a dataset's
-error is not spacing-governed and failing when it is---while a sufficiently accurate
-teacher additionally repairs the specific regions whose training support was removed.
+RegressionTM, in which a frozen, better-informed teacher acts inside the student's
+training loop: at each sample it adjusts the student's per-sample error before the
+Type~I/Type~II feedback decision, steering the clause-level update directly. We develop a
+family of such mechanisms and evaluate them under a masked-distillation protocol in which
+nested structured holes carve progressively sparser training sets, paired by seed on
+held-out data across datasets spanning the full range of teacher quality. We find that
+these mechanisms modulate rather than correct the teacher's signal; that teacher accuracy
+does not predict benefit; that a 70\%-data guided student can match or exceed a full-data
+model where additional data is harmful; and that data spacing and density govern benefit.
+Distillation in RegressionTM thus behaves as a predominantly global reshaping of the
+learned function that a sufficiently accurate teacher supplements with local repair of the
+regions whose training support was removed.

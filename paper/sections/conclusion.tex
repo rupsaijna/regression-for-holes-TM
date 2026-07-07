@@ -2,25 +2,24 @@
 \label{sec:conclusion}
 
 We studied teacher-guided knowledge distillation for the Regression Tsetlin Machine by
-letting a frozen teacher steer the student's clause-level Type~I/II feedback, and asked
-not only whether it helps but when, where, and why. Across a family of mechanisms and a
-controlled masked-distillation benchmark, we found that every mechanism is a
-\emph{sharpener} that scales the teacher's signal without rescuing a bad teacher; that
-teacher accuracy does not predict benefit; that a 70\%-data guided student can reach and
-occasionally exceed a full-data model; and that data spacing/density---not teacher
-accuracy---governs distillation benefit. These consolidate into a single account:
-distillation is a predominantly global reshaping of the learned function that helps when
-a dataset's error is not spacing-governed and fails when it is, with a good teacher
-additionally repairing the specific regions whose training support was removed. The
-transparency of the TM's clause feedback was essential to reaching, and to explaining,
-each of these conclusions.
+letting a frozen teacher steer the student's clause-level Type~I/II feedback, and asked not
+only whether it helps but when, where, and why. Across a family of mechanisms and a
+controlled masked-distillation benchmark, we found that each mechanism modulates the
+teacher's signal rather than correcting its weaknesses; that teacher accuracy does not
+predict benefit; that a 70\%-data guided student can reach and occasionally exceed a
+full-data model; and that data spacing and density, rather than teacher accuracy, govern
+distillation benefit. These consolidate into a single account: distillation is a
+predominantly global reshaping of the learned function that helps when a dataset's error is
+not spacing-governed and fails when it is, with a sufficiently accurate teacher additionally
+repairing the specific regions whose training support was removed.
 
-\paragraph{Open threads.}
-\begin{itemize}
-  \item Distinguishing input-space spacing from joint $(x,y)$ spacing as the operative
-    variable.
-  \item Firming the per-dataset density$\leftrightarrow$benefit correlation for modes
-    other than \texttt{force\_ii\_tmag}, where it is currently weaker.
-  \item Testing the account under non-structured (e.g.\ random or adversarial) scarcity
-    patterns.
-\end{itemize}
+These findings turn distillation for RegressionTM from a black-box hope into a predictable,
+inspectable tool: because the mechanism lives in the model's own clause feedback, one can
+reason in advance---from a dataset's spacing structure rather than the teacher's
+accuracy---about when guidance will pay off, and can steer a data-efficient student toward,
+and sometimes past, a model trained on far more data. Promising next steps include
+separating input-space from joint input--target spacing as the operative variable,
+strengthening the density--benefit coupling for modes beyond \texttt{force\_ii\_tmag}, and
+testing the account under scarcity patterns other than structured holes. We expect the
+interpretable, feedback-level view developed here to transfer naturally to distillation in
+other Tsetlin Machine settings.

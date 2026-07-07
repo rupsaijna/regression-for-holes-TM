@@ -1,48 +1,47 @@
 \section{Introduction}
 \label{sec:intro}
 
-The Tsetlin Machine (TM) is a propositional, clause-based learner whose predictions are
-assembled from human-readable conjunctions of literals, offering interpretability that
-most numeric regressors lack. Its regression variant, the Regression Tsetlin Machine
-(RegressionTM), predicts a continuous target from a weighted vote of such clauses. This
-transparency comes at a cost familiar to interpretable models: accurately fitting a
-regression surface generally requires densely sampled training data, and performance
-degrades where the input space is only sparsely covered.
+The Tsetlin Machine (TM)~\cite{granmo2018tsetlin} is a propositional, clause-based
+learner whose predictions are assembled from human-readable conjunctions of literals,
+offering interpretability that most numeric regressors lack. Its regression variant, the
+Regression Tsetlin Machine (RegressionTM)~\cite{abeyrathna2020regression}, predicts a
+continuous target from a weighted vote of such clauses. This transparency comes at a cost
+familiar to interpretable models: accurately fitting a regression surface generally
+requires densely sampled training data, and performance degrades where the input space is
+only sparsely covered.
 
 This motivates a data-efficiency question. When training data is scarce or unevenly
-distributed, can a better-informed \emph{teacher} model---one trained on more or
-better-covered data---guide a data-starved \emph{student} to a better fit? Knowledge
+distributed, can a better-informed \textit{teacher} model---one trained on more or
+better-covered data---guide a data-starved \textit{student} to a better fit? Knowledge
 distillation is the standard framing for this question, but distillation for the TM is
-under-explored, and the usual output-matching (soft-label) recipe does not obviously map
-onto the TM's discrete, clause-level learning dynamics.
+under-explored, and the usual output-matching (soft-label) recipe~\cite{hinton2015distilling}
+does not obviously map onto the TM's discrete, clause-level learning dynamics.
 
 We take a different route. Rather than matching the teacher's output, we let the teacher
-intervene \emph{inside the student's training loop}, at the exact point where the TM
-decides how to reinforce or erode each clause. This makes distillation a modification of
-the clause-feedback signal itself, keeping the whole mechanism inside the interpretable
-substrate of the model. Our central questions are not only \emph{whether} such guidance
-helps, but \emph{when} (which datasets), \emph{where} (which regions of the input space),
-and \emph{why}.
+intervene inside the student's training loop, at the exact point where the TM decides how
+to reinforce or erode each clause. This makes distillation a modification of the
+clause-feedback signal itself, keeping the whole mechanism inside the interpretable
+substrate of the model. Our central questions are not only whether such guidance helps,
+but when (which datasets), where (which regions of the input space), and why.
 
 We answer these through a sequence of controlled experiments under a masked-distillation
 protocol, and arrive at a single unifying account. Our contributions are:
 
 \begin{enumerate}
-  \item \textbf{A family of teacher-guided clause-feedback mechanisms} for RegressionTM
-    ---a same-side error blend, an adaptive per-sample trigger, opposite-side
-    feedback-type overrides, and teacher-bounded update magnitudes---all expressed as
-    small, reversible modifications to the standard fit loop.
-  \item \textbf{A ``sharpener, not fixer'' characterization:} every mechanism scales
-    whatever signal the teacher carries, amplifying a good teacher and aggravating a bad
-    one; none manufactures signal a poor teacher lacks.
-  \item \textbf{The finding that teacher accuracy does not predict distillation benefit},
-    with a clean counterexample (the teacher with the largest standalone accuracy edge
-    produces the worst distillation outcome).
-  \item \textbf{A demonstration that a 70\%-data guided student can match, and sometimes
-    beat, a full-data model}---the latter on datasets where additional data is actively
-    harmful.
-  \item \textbf{The identification of data spacing/density as the governing variable},
-    and a unified mechanism: distillation is a predominantly \emph{global} reshaping of
-    the learned function, with a localized hole-filling component that appears only for a
+  \item A family of teacher-guided clause-feedback mechanisms for RegressionTM---a
+    same-side error blend, an adaptive per-sample trigger, opposite-side feedback-type
+    overrides, and teacher-bounded update magnitudes---all expressed as small, reversible
+    modifications to the standard fit loop.
+  \item A characterization of these mechanisms as \textit{gain modulation}: each scales
+    whatever signal the teacher carries, amplifying a helpful teacher and aggravating an
+    unhelpful one, but supplying no signal a poor teacher lacks.
+  \item The finding that teacher accuracy does not predict distillation benefit, with a
+    clean counterexample: the teacher with the largest standalone accuracy edge produces
+    the worst distillation outcome.
+  \item A demonstration that a 70\%-data guided student can match, and sometimes exceed, a
+    full-data model---the latter on datasets where additional data is actively harmful.
+  \item The identification of data spacing/density as the governing variable, and a
+    unified account in which distillation is a predominantly global reshaping of the
+    learned function, with a localized repair component that appears only for a
     sufficiently accurate teacher.
 \end{enumerate}
