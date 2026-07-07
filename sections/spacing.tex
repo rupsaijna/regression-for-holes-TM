@@ -1,0 +1,85 @@
+\section{Data spacing and density govern benefit}
+\label{sec:spacing}
+
+The recurring threads---teacher accuracy fails to predict benefit, more data is not
+always better---point to \textbf{data spacing/density} as the governing variable, which
+is also the study's original motivating question (``does greater spacing between data
+points lead to poorer learning of the regression line?''). We test this at two
+granularities.
+
+\subsection{Per-dataset: which datasets benefit (Tier~A)}
+
+We run the full mode family over a 12-dataset panel (large datasets subsampled to $8000$
+training rows) and correlate each mode's fractional benefit against a battery of
+density/spacing metrics and against the teacher edge (Spearman across datasets). The
+headline result (Table~\ref{tab:tierA}): \textbf{for every mode, a density/structure
+metric out-predicts teacher accuracy, which sits at $\approx 0$.} The strongest and most
+robust predictor is \texttt{spc\_err\_strength}---how strongly local spacing predicts
+error within a dataset---which correlates with \texttt{force\_ii\_tmag} benefit at
+$\rho = -0.78$ ($p=0.003$).
+
+\begin{table*}[t]
+\centering
+\caption{Best density predictor vs.\ teacher edge, per mode (Tier~A, $n=12$).}
+\label{tab:tierA}
+\begin{tabular}{llrr}
+\toprule
+mode & best density predictor & $\rho$ & teacher\_edge $\rho$ \\
+\midrule
+force\_ii\_tmag    & spc\_err\_strength & $\mathbf{-0.78}$ $(p{=}0.003)$ & $-0.29$ \\
+force\_ii          & dimensionality     & $+0.58$ & $-0.04$ \\
+teacher\_sign\_tmag& knn5\_mean         & $-0.49$ & $-0.24$ \\
+sameside\_tmag     & var\_err\_strength & $-0.45$ & $-0.29$ \\
+uniform            & size ($n$)         & $+0.46$ & $-0.07$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The sign is consistently negative: \textbf{the more a dataset's error is governed by
+spacing, the less distillation helps.} On an $n\geq 100$ subset (10 datasets) the
+\texttt{force\_ii\_tmag} result tightens (\texttt{spc\_err\_strength} $-0.76$, $p=0.011$)
+and a whole cluster of spacing/spread metrics turns negative (spread $-0.62$,
+\texttt{nn1\_mean} $-0.57$, \texttt{min\_pairwise} $-0.57$). We report honest caveats:
+\texttt{het\_global\_cv} was a small-panel artifact ($-0.81$ at $n=8 \rightarrow$ n.s.\ at
+$n=12$); some modes partly track dataset \emph{size/dimensionality} rather than spacing;
+the strong, robust coupling is specifically \texttt{force\_ii\_tmag}, with the other modes
+directionally consistent but noisier at $n=10$--$12$.
+
+\subsection{Per-region: where distillation acts (Tier~B)}
+
+Bucketing held-out test points by their local spacing (distance to the nearest surviving
+training point) tests whether benefit \emph{concentrates} where data is sparse.
+
+\begin{itemize}
+  \item \textbf{B1---error rises with spacing, but only at the extreme.} The Spearman
+    correlation of error with spacing is weak (ccpp $+0.02$ to energy $+0.20$) because
+    error is roughly flat through the bulk and jumps only in the sparsest decile (sparse
+    penalty: ccpp $+12\%$, airquality $+69\%$, energy $+124\%$). The founding hypothesis
+    holds \emph{at the extreme}---the sparsest points are hardest, for the teacher
+    too---but not through the bulk.
+  \item \textbf{B2---benefit does not concentrate in sparse regions.} The Spearman of
+    benefit against spacing is $\approx 0$ everywhere. The \emph{sign} of benefit is set
+    by the dataset/teacher and is spatially diffuse: ccpp is positive in every bucket,
+    california/energy negative in every bucket, and airquality actually helps \emph{least}
+    in the sparsest bucket---the opposite of gap-filling.
+  \item \textbf{B3---a good teacher nonetheless fills its own holes.} Splitting test
+    points by whether their \emph{specific} local support was carved out (nearest removed
+    train point closer than nearest surviving one; in-hole fraction $\approx 0.28$--$0.32$)
+    reveals what the continuous spacing axis missed: \textbf{on the good teacher (ccpp),
+    benefit is ${\sim}1.5$--$2\times$ higher in-hole} (\texttt{force\_ii} $+0.397$ in $/$
+    $+0.194$ out; \texttt{teacher\_sign\_tmag} $+0.458$ $/$ $+0.312$). This localized
+    repair is \emph{absent} for weak/neutral/bad teachers (airquality helps less in-hole;
+    california/energy equal-or-worse in-hole). The two results are not contradictory: the
+    structured holes carve $k$-NN neighborhoods out of \emph{dense} regions, so in-hole
+    points sit at \emph{moderate} spacing, not in the sparse tail---the binary ``was your
+    support removed?'' separates them where the continuous spacing axis does not.
+\end{itemize}
+
+% Figures produced by spacing_buckets.py / correlate_modes_density.py.
+% Use figure* to span both columns in the IEEE two-column layout:
+% \begin{figure*}[t]\centering
+%   \includegraphics[width=.48\linewidth]{error_vs_spacing__ccpp.png}\hfill
+%   \includegraphics[width=.48\linewidth]{benefit_vs_spacing__ccpp.png}
+%   \caption{Error (left) and benefit (right) vs.\ local spacing on ccpp.}
+%   \label{fig:spacing}
+% \end{figure*}

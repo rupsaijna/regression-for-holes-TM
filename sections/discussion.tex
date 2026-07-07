@@ -1,0 +1,38 @@
+\section{Discussion: a unified mechanism}
+\label{sec:discussion}
+
+The two granularities combine into one account. \textbf{Distillation in RegressionTM is
+predominantly a \emph{global reshaping} of the learned function, with a localized
+hole-filling component that appears only for a sufficiently accurate teacher.}
+
+This single mechanism resolves every recurring puzzle in the arc:
+
+\begin{itemize}
+  \item \textbf{Why teacher accuracy doesn't predict benefit
+    (Section~\ref{sec:teacher_edge}):} the teacher having more data in the holes is
+    largely irrelevant because its correction acts globally, not in the holes---except for
+    the conditional B3 repair that only a good teacher can supply.
+  \item \textbf{Why ``more data'' reasoning fails and ``less-is-more'' exists
+    (Section~\ref{sec:full_data}):} learning quality is dominated by the dense bulk, where
+    most points and most error mass live, not the sparse tail; adding harmful bulk points
+    back can hurt without fixing the tail.
+  \item \textbf{Why every mode is a sharpener, not a fixer
+    (Sections~\ref{sec:sharpener}--\ref{sec:stability}):} a global reshaping scales
+    whatever global signal the teacher carries and has no spatial mechanism to selectively
+    repair weak regions.
+  \item \textbf{Why spacing predicts benefit negatively
+    (Section~\ref{sec:spacing}):} when a dataset's error is spacing-governed
+    (heterogeneous), a single global correction mismatches the varying local structure and
+    fails; when error is homogeneous, a global correction fits.
+\end{itemize}
+
+Spacing thus governs \emph{absolute difficulty} (B1) and \emph{which datasets benefit}
+(Tier~A), but not \emph{where within a dataset distillation acts} (B2)---the difficulty
+axis and the benefit axis are decoupled, joined only by the conditional, good-teacher
+hole-filling of B3.
+
+Throughout, the clause-level feedback of the TM was not merely the substrate but the
+\emph{instrument}: because guidance modifies the Type~I/II decision directly, we could
+attribute the runaway instability to the unbounded feedback type, localize benefit to
+carved regions, and reason about magnitude sourcing---all in terms of the model's own
+interpretable machinery.

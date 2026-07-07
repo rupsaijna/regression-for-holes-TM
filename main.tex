@@ -1,0 +1,59 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote.
+
+% ---------- packages ----------
+\usepackage[T1]{fontenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+
+\graphicspath{{figures/}}
+
+% Prevent IEEEtran hyphenation warnings on a few long tokens.
+\hyphenation{Re-gres-sion-TM}
+
+\begin{document}
+
+\title{Teacher-Guided Knowledge Distillation for the\\
+Regression Tsetlin Machine: When, Where, and Why It Helps}
+
+\author{\IEEEauthorblockN{Rupsa Saha}
+\IEEEauthorblockA{\textit{Centre for Artificial Intelligence Research (CAIR)} \\
+\textit{University of Agder}\\
+Grimstad, Norway \\
+rupsa.saha@uia.no}}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+Tsetlin Machine, Regression Tsetlin Machine, knowledge distillation,
+teacher--student learning, interpretable machine learning, Type~I/Type~II feedback,
+learning from limited data, data efficiency, data density and spacing
+\end{IEEEkeywords}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/method}
+\input{sections/sharpener}
+\input{sections/stability}
+\input{sections/teacher_edge}
+\input{sections/full_data}
+\input{sections/spacing}
+\input{sections/discussion}
+\input{sections/limitations}
+\input{sections/conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

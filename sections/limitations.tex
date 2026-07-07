@@ -1,0 +1,17 @@
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{itemize}
+  \item The per-region analysis (Tier~B) rests on 4 anchor datasets, and energy's spacing
+    is partly degenerate (discrete features collapse the deciles).
+  \item Tier~A's strong, robust coupling is specifically \texttt{force\_ii\_tmag}; other
+    modes are directionally consistent but weaker at $n=10$--$12$, and $p$-values are
+    uncorrected over many metric pairings. Some correlations partly reflect dataset
+    size/dimensionality rather than spacing per se.
+  \item Teacher-edge correlations use $n=4$ anchor datasets and are not significant.
+  \item The ``less-is-more'' phenomenon is robust only on a few heterogeneous datasets
+    (\texttt{nyse\_log}, \texttt{realestate}, \texttt{metro}); airquality's instance is
+    seed-fragile and should not be cited as the canonical example.
+  \item All results are within the masked-distillation protocol (nested structured $k$-NN
+    holes); other scarcity structures may behave differently.
+\end{itemize}

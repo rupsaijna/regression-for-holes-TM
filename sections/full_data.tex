@@ -1,0 +1,44 @@
+\section{A guided student versus a full-data model}
+\label{sec:full_data}
+
+Distillation's practical promise is data efficiency, so we ask whether a 70\%-data guided
+student can reach the full-data model M00 (Table~\ref{tab:m00}).
+
+\begin{itemize}
+  \item \textbf{Parity on a good teacher (ccpp).} \texttt{force\_ii\_tmag} reaches RMSE
+    $4.772$ against M00's $4.758$---within noise ($-0.014$ mean, winning 3/6 seeds). A
+    student on 70\% of the data plus distillation closes almost the entire gap to the
+    full-data model.
+  \item \textbf{Beating the ceiling where data hurts (airquality).} The full model is
+    \emph{anomalously bad} here: M00 ($1.745$) $>$ M20 ($1.657$) $>$ 30\%-student
+    ($1.736$). More data makes it worse, because the structured holes happen to remove
+    points that harm generalization. \texttt{force\_ii} beats the full model by $+0.185$
+    (5/6 seeds). This is a ``less-is-more'' dataset---an existence proof of the project's
+    core hypothesis that on some datasets less, better-spaced data generalizes better
+    ---though the honest reading is ``full is a weak baseline here,'' not ``distillation
+    beat an honest ceiling.''
+  \item \textbf{No free lunch (california, energy).} Where the full model is a genuine
+    ceiling it wins comfortably; no mode beats M00.
+\end{itemize}
+
+\begin{table*}[t]
+\centering
+\caption{Best guided student vs.\ full-data M00.}
+\label{tab:m00}
+\begin{tabular}{lrrl}
+\toprule
+dataset & M00 RMSE & best guided & verdict \\
+\midrule
+ccpp       & 4.758 & 4.772 (\texttt{force\_ii\_tmag}) & tie (3/6 seeds) \\
+airquality & 1.745 & 1.560 (\texttt{force\_ii})       & guided beats M00 (5/6) \\
+california & 0.612 & ${\sim}0.63$                     & M00 wins \\
+energy     & 0.959 & ${\sim}1.24$                     & M00 wins clearly \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+We caution that the robust ``less-is-more'' datasets in our broader panel are
+\texttt{nyse\_log} ($+4.5\%$), \texttt{realestate} ($+2.8\%$), and \texttt{metro}
+($+0.4\%$); airquality's effect is real but \emph{seed-fragile} (it flips at 4 seeds) and
+energy is firmly the opposite (M00 $18\%$ better). ``More data can hurt'' holds on a few
+genuinely heterogeneous datasets, not universally.

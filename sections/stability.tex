@@ -1,0 +1,57 @@
+\section{Feedback type, stability, and the asymmetry of Type~I/II}
+\label{sec:stability}
+
+The opposite-side override experiments expose why the two feedback types behave so
+differently under distillation.
+
+\paragraph{\texttt{force\_ii} is safe; \texttt{teacher\_sign} is high-ceiling but
+unstable.}
+Forcing the bounded Type~II on disagreement samples turns the weak-teacher dataset
+airquality into a significant win ($+0.175$, $t=2.33$; gain $+0.098$, $t=2.27$) by
+\emph{acting} on samples the baseline ignored, and it never explodes---Type~II can only
+erode, so the update is self-limiting. Routing by the teacher's sign achieves the best
+single result on ccpp ($+0.529$, $t=3.09$) but \textbf{blows up on airquality} (mean
+$-18.3$, individual seeds at $-5, -21, -80$). The mechanism of the blow-up is precisely
+the unbounded feedback type: on a disagreement sample where the student over-predicts
+(error $>0$) but the teacher under-predicts, \texttt{teacher\_sign} fires \textbf{Type~I},
+pushing an already-too-high prediction higher---a positive-feedback loop with no upper
+bound. \texttt{force\_ii} is immune because it never selects the raising direction.
+
+\paragraph{Bounding either the type or the magnitude removes the runaway.}
+Two fixes both eliminate the instability (airquality standard deviation drops from $25.4$
+to $\approx 0.23$). Dropping the Type~I branch (\texttt{teacher\_sign\_ii}) is \emph{safe
+but inert}---it kills the blow-up and most of the signal (airquality $\approx 0$, energy
+still significantly harmful). Bounding the \emph{magnitude} to the teacher's frozen error
+(\texttt{teacher\_sign\_tmag}) is better on every axis: airquality $+0.107$ (actually
+positive), energy harm roughly halved ($-0.152$ vs $-0.377$), and the lowest variance
+throughout (Table~\ref{tab:stability}). This was the first mechanism in the arc to make a
+\emph{bad} teacher meaningfully \emph{less} harmful rather than merely amplifying it.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Stability fixes on airquality and energy, mean \texttt{impr} (std).}
+\label{tab:stability}
+\begin{tabular}{llrr}
+\toprule
+dataset & mode & mean \texttt{impr} & std \\
+\midrule
+\multirow{4}{*}{airquality}
+  & uniform            & $+0.078$  & $0.19$ \\
+  & teacher\_sign      & $-17.39$  & $25.41$ \\
+  & teacher\_sign\_ii  & $-0.001$  & $0.23$ \\
+  & teacher\_sign\_tmag& $\mathbf{+0.107}$ & $0.25$ \\
+\midrule
+\multirow{4}{*}{energy}
+  & uniform            & $-0.062$  & $0.13$ \\
+  & teacher\_sign      & $-0.377$  & $0.25$ \\
+  & teacher\_sign\_ii  & $-0.366$  & $0.22$ \\
+  & teacher\_sign\_tmag& $\mathbf{-0.152}$ & $0.11$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The broader lesson is that the TM's \textbf{feedback asymmetry is a safety property}: any
+distillation mode confined to the bounded Type~II direction is inherently stable, whereas
+modes that can trigger the expansive Type~I in the wrong direction require an explicit
+magnitude bound.
