@@ -1,31 +1,33 @@
 \subsection{Feedback type, stability, and the asymmetry of Type~I/II}
 \label{sec:stability}
 
-The opposite-side override experiments expose why the two feedback types behave so
+The opposite-side override experiments show why the two feedback types behave so
 differently under distillation (Table~\ref{tab:stability}).
 
 \paragraph{\texttt{force\_ii} is stable; \texttt{teacher\_sign} is high-ceiling but
 unstable.}
-Forcing the bounded Type~II on disagreement samples turns the weak teacher airquality into
-a significant gain ($+0.175$, $t=2.33$) by acting on samples the baseline ignored, and it
-never diverges---Type~II can only erode, so the update is self-limiting. Routing by the
-teacher's sign (\texttt{teacher\_sign}) achieves the best single result on ccpp ($+0.529$,
-$t=3.09$) but diverges on airquality (mean $-17.4$, individual seeds at $-5, -21, -80$;
-standard deviation $25.4$). The mechanism of the divergence is the unbounded
-feedback type: on a disagreement sample where the student over-predicts (error $>0$) but
-the teacher under-predicts, \texttt{teacher\_sign} fires Type~I, pushing an
-already-too-high prediction higher, which creates a positive-feedback loop with no upper bound.
-\texttt{force\_ii} is immune to this particular negative because it never selects the raising direction.
+Forcing the bounded Type~II on disagreement samples turns airquality, a weak teacher from
+which the baseline blend barely helps, into a significant gain ($+0.175$, $t=2.33$) by
+acting on samples the baseline ignores. Because Type~II can only erode clauses, the update
+is self-limiting and never diverges. Routing the feedback type by the teacher's error sign
+(\texttt{teacher\_sign}) instead gives the best single result on the good teacher ccpp
+($+0.529$, $t=3.09$), but it diverges on airquality (mean $-17.4$; individual seeds at
+$-5$, $-21$, $-80$; standard deviation $25.4$). The cause is the unbounded feedback type:
+on a disagreement sample where the student over-predicts (error $>0$) but the teacher
+under-predicts, \texttt{teacher\_sign} fires Type~I, which pushes an already-too-high
+prediction higher, and because Type~I is unbounded this forms a positive-feedback loop with
+no upper limit. \texttt{force\_ii} avoids the problem because it only ever fires the
+lowering Type~II direction and never the raising Type~I direction.
 
 \paragraph{Bounding either the type or the magnitude removes the divergence.}
-Two fixes both eliminate the instability (airquality standard deviation drops from $25.4$
-to $\approx\!0.23$; Table~\ref{tab:stability}). Dropping the Type~I branch
-(\texttt{teacher\_sign\_ii}) is safe but inert---it removes the divergence and most of the
-signal (airquality $\approx\!0$, energy still significantly harmful). Bounding the
-magnitude to the teacher's frozen error (\texttt{teacher\_sign\_tmag}) is better on every
-axis: airquality $+0.107$ (positive), energy harm roughly halved ($-0.152$ vs $-0.377$),
-and the lowest variance throughout. This mechanism effectively made a bad
-teacher meaningfully less harmful rather than amplifying it.
+Two fixes both eliminate the instability (airquality standard deviation drops from $25.4$ to
+$\approx\!0.23$; Table~\ref{tab:stability}). Dropping the Type~I branch
+(\texttt{teacher\_sign\_ii}) is safe but inert: it removes the divergence and most of the
+benefit (airquality $\approx\!0$, energy still significantly harmful). Bounding the
+magnitude to the teacher's frozen prediction error (\texttt{teacher\_sign\_tmag}) is better
+on every axis: airquality $+0.107$ (positive), energy harm roughly halved ($-0.152$ versus
+$-0.377$), and the lowest variance throughout. This is the first mechanism that makes a bad
+teacher meaningfully less harmful rather than merely amplifying it.
 
 \begin{table}[t]
 \centering
@@ -51,7 +53,7 @@ dataset & mode & mean \texttt{impr} & std \\
 \end{tabular}
 \end{table}
 
-The broader lesson is that the TM's feedback asymmetry is a safety property: any
+The broader lesson is that the TM's feedback asymmetry acts as a safety property: any
 distillation mode confined to the bounded Type~II direction is inherently stable, whereas
-modes that can trigger the expansive Type~I in the wrong direction require an explicit
+modes that can fire the unbounded Type~I in the wrong direction require an explicit
 magnitude bound.

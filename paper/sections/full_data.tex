@@ -1,40 +1,42 @@
 \subsection{A guided student versus a full-data model}
 \label{sec:full_data}
 
-Distillation's practical promise is data efficiency, so we ask whether a 70\%-data guided
+Distillation's practical promise is data efficiency, so we ask whether a $70\%$-data guided
 student can reach the full-data model M00 (Table~\ref{tab:m00}). The outcome depends on
 whether the full data is a genuine ceiling.
 
 On the good teacher ccpp, \texttt{force\_ii\_tmag} reaches RMSE $4.772$ against M00's
-$4.758$---a statistical tie (within noise, winning 3/6 seeds). A student on 70\% of the
+$4.758$, a statistical tie (within noise, winning 3/6 seeds): a student on $70\%$ of the
 data plus distillation closes almost the entire gap to the full-data model. On airquality
-the guided student actually beats M00: the full model is anomalously weak there, with
-M00 ($1.745$) worse than both M20 ($1.657$) and the 30\%-hole student ($1.736$), so more
-data hurts. The structured holes happen to remove points that harm generalization, and
-\texttt{force\_ii} beats the full model by $+0.185$ (5/6 seeds). This is a ``less-is-more''
-case---an existence proof that on some datasets less, better-spaced data generalizes
-better---here because the full model is a weak baseline rather than because distillation
-surpassed a strong ceiling. On california and energy, where the full model is a genuine
-ceiling, it wins comfortably and no mode beats M00.
+the guided student actually beats M00. The full model is anomalously weak there, with M00
+($1.745$) worse than both M20 ($1.657$) and the unguided student M30 ($1.736$), so more
+data hurts; the structured holes happen to remove points that harm generalization, and
+\texttt{force\_ii} beats the full model by $+0.185$ (5/6 seeds). This is a case of
+non-monotonic data scaling (colloquially, ``less is more''), in which withholding part of
+the training set improves generalization. Here it arises because the full model is a weak
+baseline rather than because distillation surpassed a strong ceiling. On california and
+energy, where the full model is a genuine ceiling, it wins comfortably and no mode beats
+M00.
 
 \begin{table*}[t]
 \centering
-\caption{Best guided (70\%-data) student vs.\ full-data M00, RMSE.}
+\caption{Best guided ($70\%$-data) student versus full-data M00, RMSE. The parenthesised
+mode is the version giving the lowest guided RMSE on each dataset.}
 \label{tab:m00}
 \begin{tabular}{lrr}
 \toprule
-dataset & M00 RMSE & best guided student RMSE \\
+dataset & M00 RMSE & best guided student RMSE (mode) \\
 \midrule
 ccpp       & 4.758 & 4.772 \; (\texttt{force\_ii\_tmag}) \\
 airquality & 1.745 & 1.560 \; (\texttt{force\_ii}) \\
-california & 0.612 & ${\sim}0.63$ \\
-energy     & 0.959 & ${\sim}1.24$ \\
+california & 0.612 & 0.637 \; (\texttt{force\_ii}) \\
+energy     & 0.959 & 1.235 \; (\texttt{sameside\_tmag}) \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-The robust ``less-is-more'' datasets in our broader panel are \texttt{nyse\_log}
-($+4.5\%$), \texttt{realestate} ($+2.8\%$), and \texttt{metro} ($+0.4\%$); airquality's
-effect is real but seed-fragile (it flips at 4 seeds) and energy is firmly the opposite
-(M00 $18\%$ better). ``More data can hurt'' thus holds on a few genuinely heterogeneous
-datasets, not universally.
+The datasets showing this non-monotonic behaviour in our broader panel are
+\texttt{nyse\_log} ($+4.5\%$), \texttt{realestate} ($+2.8\%$), and \texttt{metro}
+($+0.4\%$). airquality's effect is real but seed-fragile (it flips at 4 seeds), and energy
+is firmly the opposite (M00 $18\%$ better). Withholding data therefore helps on a few
+genuinely heterogeneous datasets, not universally.

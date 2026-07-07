@@ -1,20 +1,20 @@
 \section{Related Work}
 \label{sec:related}
 
-The Tsetlin Machine has developed rapidly since its introduction, both as an architecture
-and across applications. On the architectural side, the Convolutional Tsetlin Machine
-extends the model to image data~\cite{granmo2019convtm}, integer-weighted clauses compress
-the clause representation while improving interpretability~\cite{abeyrathna2021integer},
-and the Regression Tsetlin Machine adapts the clause-vote output to continuous
-targets~\cite{abeyrathna2020regression}, and this is the setting we build on. On the application side, Tsetlin Machines have been used to discover interpretable rules in natural language
-processing~\cite{saha2023nlprules}, to model relational structure for language
-understanding~\cite{saha2022relational}, and to fuse heterogeneous data sources
+The TM has developed rapidly since its introduction, both as an architecture and across
+applications. On the architectural side, the Convolutional TM extends the model to image
+data~\cite{granmo2019convtm}, integer-weighted clauses compress the clause representation
+while improving interpretability~\cite{abeyrathna2021integer}, and the RegressionTM adapts
+the clause-vote output to continuous targets~\cite{abeyrathna2020regression}, which is the
+setting we build on. On the application side, TMs have been used to discover interpretable
+rules in natural language processing~\cite{saha2023nlprules}, to model relational structure
+for language understanding~\cite{saha2022relational}, and to fuse heterogeneous data sources
 efficiently~\cite{saha2023datafusion}. A common thread is interpretability: because
 predictions are assembled from human-readable clauses, the learned model can be inspected
 directly.
 
-Knowledge distillation, by contrast, has been studied extensively for neural
-networks~\cite{hinton2015distilling} but remains largely unexplored for TMs,
-and existing recipes target output matching rather than the clause-level feedback that
-gives the TM its transparency. Our work addresses this gap by distilling directly through
-the Type~I/Type~II feedback signal.
+Knowledge distillation has been studied extensively for neural networks but remains largely
+unexplored for TMs, and existing recipes target output matching with soft
+labels~\cite{hinton2015distilling} rather than the clause-level feedback that gives the TM
+its transparency. Our work addresses this gap by distilling directly through the
+Type~I/Type~II feedback signal.

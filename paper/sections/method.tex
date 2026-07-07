@@ -4,41 +4,57 @@
 \subsection{Datasets}
 \label{sec:data}
 
-We evaluate on a panel of twelve public regression datasets chosen to decouple two
+We evaluate on twelve public regression datasets, drawn from scikit-learn, the UCI Machine
+Learning Repository~\cite{uci_repository}, the Sutanoy public regression collection, and a
+Kaggle stock-market dataset~\cite{gawlik2016nyse}. They were chosen to decouple two
 properties that are usually entangled: how accurate the teacher is, and how the data is
-geometrically distributed. The panel spans four sources---the \texttt{scikit-learn}
-California Housing set, the UCI Machine Learning Repository (including its time-series
-regression subset), the Sutanoy public regression collection, and a Kaggle NYSE
-dataset---and a deliberately wide range of prediction objectives.
+geometrically distributed.
 
-Four datasets serve as anchors for the per-region analysis, chosen to span teacher
-quality. \textbf{ccpp} (UCI Combined Cycle Power Plant, $n\!\approx\!9.6$k) predicts a
-power plant's net electrical output from ambient temperature, pressure, humidity and
-exhaust vacuum; the relationship is nearly linear ($R^2\!\approx\!0.93$), the cleanest
-large set in the panel. \textbf{airquality} (UCI Air Quality, $n\!\approx\!6.9$k) predicts
-true benzene concentration from metal-oxide gas-sensor responses, a moderately
-unevenly-spaced time series. \textbf{california} ($n\!\approx\!20.6$k) predicts median
-house value from eight census predictors. \textbf{energy} (UCI Energy Efficiency,
-$n\!=\!768$) predicts a building's heating load from eight shape parameters.
+Four datasets serve as anchors for the per-region analysis, selected to span teacher
+quality. \textbf{ccpp}~\cite{tufekci2014ccpp} (Combined Cycle Power Plant,
+$n\!\approx\!9.6$k) predicts a plant's net electrical output from ambient temperature,
+pressure, humidity, and exhaust vacuum; the relationship is nearly linear
+($R^2\!\approx\!0.93$), making it the cleanest large set in the panel.
+\textbf{airquality}~\cite{devito2008airquality} ($n\!\approx\!6.9$k) predicts benzene
+concentration from metal-oxide gas-sensor responses, and its test points are moderately
+unevenly spaced. \textbf{california}~\cite{pace1997california} ($n\!\approx\!20.6$k)
+predicts median house value from eight census predictors.
+\textbf{energy}~\cite{tsanas2012energy} (Energy Efficiency, $n\!=\!768$) predicts a
+building's heating load from eight shape parameters.
 
-The broader panel adds smaller near-linear sets (\textbf{autompg}, \textbf{realestate},
-and the textbook \textbf{mortality} and \textbf{bloodfat}), and unevenly-spaced
-time-series sets whose test points are concentrated or bimodal in feature space:
-\textbf{metro} (hourly interstate traffic volume, the most unevenly-spaced set in the
-panel), \textbf{beijing} (hourly PM2.5), and \textbf{nyse}/\textbf{nyse\_log} (next-day
-trading volume, whose raw target is heavy-tailed---spanning $10^2$ to $10^8$
-shares---while \texttt{nyse\_log} is its log-transformed, better-behaved control). These
-objective differences---from smooth physical outputs to heavy-tailed financial volume and
-bimodal traffic---mean the datasets differ not only in teacher quality but also in spacing
-structure. All loaders keep numeric features only, drop missing rows, and use a fixed per-dataset train/test split; the large time-series sets are strided down to keep the CPU TM tractable.
+The remaining eight datasets extend this range in two directions. Four are smaller,
+approximately linear sets: \textbf{autompg}, \textbf{realestate}, and the textbook
+\textbf{mortality} and \textbf{bloodfat} regressions. The other four are time series whose
+test points are concentrated or bimodal in feature space and are therefore unevenly
+spaced: \textbf{metro} (hourly interstate traffic volume, the most unevenly spaced set in
+the panel), \textbf{beijing} (hourly PM2.5), and \textbf{nyse} and \textbf{nyse\_log}
+(next-day trading volume). The raw \texttt{nyse} target is heavy-tailed, spanning roughly
+$10^2$ to $10^8$ shares, whereas \texttt{nyse\_log} is its log-transformed, better-behaved
+control. Across the twelve datasets the objectives therefore range from smooth physical
+outputs to heavy-tailed financial volume and bimodal traffic, so the datasets differ not
+only in teacher quality but also in spacing structure, which is the axis this study probes.
+
+All loaders keep numeric features only, drop rows with missing values, and use a fixed
+per-dataset train/test split. To keep the CPU-based TM tractable, the four large
+time-series sets (each with tens of thousands of rows) are strided down deterministically:
+the rows are ordered and every $k$-th row is retained, with $k$ chosen to reach about
+$8000$ training rows. Deterministic striding, rather than random sampling, preserves the
+original ordering and feature-space coverage of the series.
 
 \subsection{Teacher-guided clause feedback}
 \label{sec:tgcf}
 
-Our teacher is a frozen RegressionTM trained on less-masked data. During the student's
-\texttt{fit}, at each training sample we optionally (with probability
-$p_{\text{teacher}}$) let the teacher's encoded prediction adjust the student's
-per-sample error before the Type~I/Type~II dispatch:
+The teacher is a RegressionTM that is trained once and then frozen. It is trained on less
+heavily masked data than the student: the teacher sees the 20\%-hole training set, whereas
+the student sees the more sparsely sampled 30\%-hole set (Section~\ref{sec:protocol}). In
+this sense ``less-masked'' means the teacher retains more of the training distribution and
+is therefore better informed about the regions the student is missing.
+
+During the student's \texttt{fit}, at each training sample we optionally (with probability
+$p_{\text{teacher}}$) use the teacher's prediction to adjust the student's per-sample error
+before the Type~I/Type~II dispatch. We call the sign and magnitude of this adjusted error
+the teacher's \textit{error signal}, since it is what the teacher contributes to the update.
+The adjustment depends on whether teacher and student agree:
 
 \begin{itemize}
   \item If the teacher and student errors lie on the same side of the encoded target, we
@@ -49,63 +65,71 @@ per-sample error before the Type~I/Type~II dispatch:
     controlled ways.
 \end{itemize}
 
-Because the intervention modifies $\texttt{prediction\_error}$ before dispatch, the
-teacher influences which feedback type fires and how large the update is---it steers the
-clause-level learning signal directly, never the output. All variants reduce bit-for-bit
-to the unmodified RegressionTM when the teacher is disabled, which we verify by
-reproducing the baseline arm identically across experiments.
+Because the intervention modifies the per-sample error before dispatch, the teacher
+influences which feedback type fires and how large the update is, steering the clause-level
+learning directly rather than the model output. Every variant reduces exactly to the
+unmodified RegressionTM when the teacher is disabled, which we verify by reproducing the
+baseline arm identically across experiments.
 
 \subsection{The family of mechanisms}
 \label{sec:family}
 
-We develop the mechanisms as a sequence of small, versioned modifications. Each named
-mode below corresponds to a column in the results tables, described here for reference.
+We develop the mechanisms as a sequence of small, versioned modifications. Each named mode
+below is reported as a column in Tables~\ref{tab:adaptive}--\ref{tab:stability}, referenced
+here for the reader.
 
 \begin{itemize}
-  \item \textbf{Baseline} (referred to as \texttt{uniform} in
-    Tables~\ref{tab:adaptive}--\ref{tab:stability}): the teacher fires at a fixed
-    probability $p_{\text{teacher}}$ on same-side samples with opposite-side samples
-    ignored; this is the same-side blend and the reference arm all gains are measured
-    against.
-  \item \textbf{Adaptive trigger} (\texttt{adapt\_disagree}, \texttt{adapt\_error} in
-    Table~\ref{tab:adaptive}): rather than a uniform firing probability, fire the teacher
-    preferentially where it is most informative, via a budget-matched per-epoch
-    probability $p_e = \operatorname{clip}(p \cdot d_e / \operatorname{mean}(d_e), 0, 1)$,
-    with $d_e$ either the teacher--student disagreement or the student's error.
-  \item \textbf{Opposite-side type override} (\texttt{force\_ii}, \texttt{teacher\_sign}
-    in Tables~\ref{tab:tmag} and~\ref{tab:stability}): on disagreement samples, override
-    the feedback type while keeping the student's error magnitude---\texttt{force\_ii}
-    always fires the bounded Type~II, whereas \texttt{teacher\_sign} routes the feedback type by the teacher's error sign.
-  \item \textbf{Stability fixes} (\texttt{teacher\_sign\_ii}, \texttt{teacher\_sign\_tmag}
-    in Table~\ref{tab:stability}): \texttt{teacher\_sign\_ii} drops the runaway-prone
-    Type~I branch; \texttt{teacher\_sign\_tmag} keeps the routing but sources the update
-    magnitude from the teacher's frozen, bounded error.
-  \item \textbf{Teacher-bounded magnitude} (\texttt{force\_ii\_tmag}, \texttt{sameside\_tmag}
-    in Table~\ref{tab:tmag}): \texttt{force\_ii\_tmag} combines forced Type~II with the
-    teacher-bounded magnitude, while \texttt{sameside\_tmag} leaves the opposite-side
-    branch untouched but has the same-side updates take the teacher's magnitude.
+  \item \textbf{Baseline} (\texttt{uniform}, Tables~\ref{tab:adaptive}--\ref{tab:stability}):
+    the teacher fires at a fixed probability $p_{\text{teacher}}$ on same-side samples,
+    with opposite-side samples ignored. This is the same-side blend and the reference arm
+    against which all gains are measured.
+  \item \textbf{Adaptive trigger} (\texttt{adapt\_disagree}, \texttt{adapt\_error},
+    Table~\ref{tab:adaptive}): rather than firing at a uniform probability, fire the teacher
+    preferentially where it is most informative, via a budget-matched per-epoch probability
+    $p_e = \operatorname{clip}(p \cdot d_e / \operatorname{mean}(d_e), 0, 1)$, with $d_e$
+    either the teacher--student disagreement or the student's error.
+  \item \textbf{Opposite-side type override} (\texttt{force\_ii}, \texttt{teacher\_sign},
+    Tables~\ref{tab:tmag} and~\ref{tab:stability}): on disagreement samples, override the
+    feedback type while keeping the student's error magnitude. \texttt{force\_ii} always
+    fires the bounded Type~II, whereas \texttt{teacher\_sign} chooses the type from the sign
+    of the teacher's error.
+  \item \textbf{Stability fixes} (\texttt{teacher\_sign\_ii}, \texttt{teacher\_sign\_tmag},
+    Table~\ref{tab:stability}): two safeguards for \texttt{teacher\_sign}.
+    \texttt{teacher\_sign\_ii} removes its Type~I branch, so it applies only the bounded
+    Type~II. \texttt{teacher\_sign\_tmag} keeps the type routing but takes the update
+    magnitude from the teacher's own prediction error rather than the student's; because the
+    teacher is frozen, this magnitude is fixed in advance and cannot grow during training,
+    which caps how large any single update can be.
+  \item \textbf{Teacher-bounded magnitude} (\texttt{force\_ii\_tmag}, \texttt{sameside\_tmag},
+    Table~\ref{tab:tmag}): \texttt{force\_ii\_tmag} combines forced Type~II with the
+    teacher-bounded magnitude, while \texttt{sameside\_tmag} leaves the opposite-side branch
+    untouched but has the same-side updates take the teacher's magnitude.
 \end{itemize}
 
 \subsection{Masked-distillation protocol}
 \label{sec:protocol}
 
-To create a controlled scarcity setting we carve nested structured holes into the training
+To create a controlled scarcity setting, we carve nested structured holes into the training
 set using a $k$-NN procedure: the teacher is trained on an 80\%-kept set (a 20\% structured
 hole), and the student on a nested 70\%-kept set (a 30\% hole) contained within the
-teacher's. The guided student and the unguided baseline train on the same 30\%-hole data;
-the only difference is whether the teacher is active. All models are evaluated on a fixed,
-unmasked held-out test set, isolating the effect of distillation from any change in the
+teacher's. The guided student and the unguided baseline train on the same 30\%-hole data,
+differing only in whether the teacher is active. All models are evaluated on a fixed,
+unmasked held-out test set, which isolates the effect of distillation from any change in the
 student's own data.
 
 \subsection{Experimental setup}
 \label{sec:setup}
 
 Unless noted, we use $T=5000$, $1000$ clauses, specificity $s=2.75$, same-side blend
-$f=0.75$, $p_{\text{teacher}}=0.5$, $100$ epochs, and $6$ seeds (42--47). Comparisons are
-paired by seed. Our primary metric is improvement over the unguided student,
-$\texttt{impr} = \mathrm{RMSE}(\text{unguided}) - \mathrm{RMSE}(\text{guided})$ (positive
-$=$ distillation helps), with paired $t$-statistics across seeds. Most analyses use the
-four anchor datasets; the dataset-level correlation study (Section~\ref{sec:spacing})
-broadens to the full twelve. We denote the full-data (0\%-hole) model \textbf{M00} and the
-teacher (20\%-hole) model \textbf{M20}, used respectively as an upper-reference ceiling and
-as the standalone-teacher baseline.
+$f=0.75$, teacher-firing probability $p_{\text{teacher}}=0.5$, $100$ epochs, and $6$ seeds
+(42--47). The teacher and student share these hyperparameters and differ only in their
+training data, and the same fixed configuration is used for every dataset and mode, so
+reported differences reflect the distillation mechanism rather than per-dataset tuning.
+Comparisons are paired by seed. We denote the full-data ($0\%$-hole) model \textbf{M00}, the
+teacher ($20\%$-hole) model \textbf{M20}, and the unguided student trained on the
+$30\%$-hole data \textbf{M30}. M30 is the baseline against which distillation benefit is
+measured: $\texttt{impr} = \mathrm{RMSE}(\text{M30}) - \mathrm{RMSE}(\text{guided})$, with a
+positive value meaning distillation helps, reported with paired $t$-statistics across seeds.
+Most analyses use the four anchor datasets; the dataset-level correlation study
+(Section~\ref{sec:spacing}) uses the full twelve. M00 serves as an upper-reference ceiling
+and M20 as the standalone-teacher baseline.

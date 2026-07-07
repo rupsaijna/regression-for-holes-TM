@@ -1,22 +1,22 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-We studied teacher-guided knowledge distillation for the Regression Tsetlin Machine by
-letting a frozen teacher steer the student's clause-level Type~I/II feedback, and asked not
-only whether it helps but when, where, and why. Across a family of mechanisms and a
-controlled masked-distillation benchmark, we found that each mechanism modulates the
-teacher's signal rather than correcting its weaknesses; that teacher accuracy does not
-predict benefit; that a 70\%-data guided student can reach and occasionally exceed a
-full-data model; and that data spacing and density, rather than teacher accuracy, govern
-distillation benefit. These consolidate into a single account: distillation is a
-predominantly global reshaping of the learned function that helps when a dataset's error is
-not spacing-governed and fails when it is, with a sufficiently accurate teacher additionally
-repairing the specific regions whose training support was removed.
+We studied teacher-guided knowledge distillation for the RegressionTM by letting a frozen
+teacher steer the student's clause-level Type~I/II feedback, and asked not only whether it
+helps but when, where, and why. Across a family of mechanisms and a controlled
+masked-distillation benchmark, we found that each mechanism modulates the teacher's error
+signal rather than correcting its weaknesses; that teacher accuracy does not predict
+benefit; that a $70\%$-data guided student can reach and occasionally exceed a full-data
+model; and that data spacing and density, rather than teacher accuracy, govern distillation
+benefit. These consolidate into a single account: distillation is a predominantly global
+reshaping of the learned function that helps when a dataset's error is not spacing-governed
+and fails when it is, with a sufficiently accurate teacher additionally repairing the
+specific regions whose training support was removed.
 
-These findings turn distillation for RegressionTM from a black-box hope into a predictable,
-inspectable tool: because the mechanism lives in the model's own clause feedback, one can
-reason in advance---from a dataset's spacing structure rather than the teacher's
-accuracy---about when guidance will pay off, and can steer a data-efficient student toward,
-and sometimes past, a model trained on far more data. Building on the directions in
+These findings turn distillation for the RegressionTM from a black-box hope into a
+predictable, inspectable tool. Because the mechanism lives in the model's own clause
+feedback, one can reason in advance, from a dataset's spacing structure rather than the
+teacher's accuracy, about when guidance will pay off, and can steer a data-efficient student
+toward, and sometimes past, a model trained on far more data. Building on the directions in
 Section~\ref{sec:limitations}, we expect this interpretable, feedback-level view of
-distillation to transfer naturally to other Tsetlin Machine settings.
+distillation to transfer naturally to other TM settings.

@@ -16,8 +16,8 @@ phenomenon is robust on just a few heterogeneous datasets (\texttt{nyse\_log},
 be treated as canonical.
 
 \paragraph{Protocol and configuration scope.}
-All results are obtained within one masked-distillation protocol---nested structured
-$k$-NN holes with a fixed teacher (80\% kept) and student (70\% kept)---so other scarcity
+All results are obtained within one masked-distillation protocol, namely nested structured
+$k$-NN holes with a fixed teacher (80\% kept) and student (70\% kept), so other scarcity
 structures, mask fractions, or nesting depths may behave differently. The teacher is a
 single frozen model rather than an ensemble, and the core hyperparameters ($T$, clause
 count, specificity, blend factor $f$, teacher-firing probability $p_{\text{teacher}}$, and
@@ -48,14 +48,14 @@ Several directions follow directly from these limitations.
     map how the global-reshaping-plus-local-repair account depends on how data is removed.
   \item \textbf{Teacher design and gating.} Explore teacher ensembles, self-distillation,
     and iterative teacher--student rounds; and, since accuracy does not predict benefit,
-    build a data-geometry gate---for example a spacing-based go/no-go rule---that decides
+    build a data-geometry gate, for example a spacing-based go/no-go rule, that decides
     when to distil at all.
   \item \textbf{Mechanism extensions.} Study scheduled or learned $p_{\text{teacher}}$,
     per-region teacher trust, and combinations of teacher-bounded magnitude with adaptive
     triggering, and port the mechanisms to the weighted and convolutional variants and to
-    classification Tsetlin Machines.
+    classification TMs.
   \item \textbf{Interpretability and theory.} Quantify what the teacher transfers at the
-    clause level---turning the ``inspectable'' claim into measurements---and develop a
+    clause level, turning the ``inspectable'' claim into measurements, and develop a
     theoretical account of why global reshaping dominates and when localized in-hole repair
     emerges from the Type~I/Type~II dynamics.
 \end{itemize}
