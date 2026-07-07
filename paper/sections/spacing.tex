@@ -11,7 +11,7 @@ points lead to poorer learning of the regression surface? We test it at two gran
 We run the full mode family over the twelve-dataset panel (large datasets strided to $8000$
 training rows) and correlate each mode's fractional benefit with a battery of
 density and spacing metrics and with the teacher edge (Spearman across datasets). The
-headline result appears in Table~\ref{tab:tierA} and is visualised in
+headline result appears in Table~\ref{tab:density} and is visualised in
 Fig.~\ref{fig:heatmap}: for every mode, a density or structure metric out-predicts teacher
 accuracy, which sits at $\approx\!0$. The strongest and most robust predictor is
 \texttt{spc\_err\_strength}, a measure of how strongly local spacing predicts error within
@@ -21,7 +21,7 @@ a dataset, which correlates with \texttt{force\_ii\_tmag} benefit at $\rho = -0.
 \begin{table*}[t]
 \centering
 \caption{Best density predictor versus teacher edge, per mode (twelve-dataset panel).}
-\label{tab:tierA}
+\label{tab:density}
 \begin{tabular}{llrr}
 \toprule
 mode & best density predictor & $\rho$ & teacher\_edge $\rho$ \\
@@ -37,7 +37,7 @@ uniform            & size ($n$)         & $+0.46$ & $-0.07$ \\
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.92\textwidth]{modes_density_heatmap__eff_norm.png}
+\includegraphics[width=0.92\textwidth]{density_benefit_heatmap.png}
 \caption{Spearman correlation of each mode's fractional benefit with every density and
 spacing metric and with the teacher accuracy edge (rightmost column) across the
 twelve-dataset panel. The metrics are: $n$, dataset size; $d$, input dimensionality;

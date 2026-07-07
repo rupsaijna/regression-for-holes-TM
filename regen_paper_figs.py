@@ -43,7 +43,7 @@ ax.set_title("Spearman(benefit, predictor) across the 12-dataset panel "
 cb = fig.colorbar(im, ax=ax, fraction=0.025, pad=0.01)
 cb.set_label("Spearman r")
 fig.tight_layout()
-fig.savefig(os.path.join(FIGDIR, "modes_density_heatmap__eff_norm.png"), dpi=150)
+fig.savefig(os.path.join(FIGDIR, "density_benefit_heatmap.png"), dpi=150)
 plt.close(fig)
 print("wrote heatmap; columns =", len(pred_order), "(no knn_ratio_mean)")
 
@@ -58,13 +58,13 @@ x = g["spacing"].mean().values
 
 # (a) error vs spacing: M30 (unguided) + two guided modes
 fig, ax = plt.subplots(figsize=(6.2, 4.2))
-ax.plot(x, g["err_unguided"].mean().values, "o-", color="#8c8c8c", label="M30 (unguided)")
+ax.plot(x, g["err_unguided"].mean().values, "o-", color="#8c8c8c", label="M30")
 ax.plot(x, g["err_force_ii"].mean().values, "o-", color="#1f77b4", label="force_ii")
 ax.plot(x, g["err_teacher_sign_tmag"].mean().values, "o-", color="#2ca02c",
         label="teacher_sign_tmag")
 ax.set_xlabel("local spacing (dist. to nearest surviving train point, z-space)")
 ax.set_ylabel("mean |error|")
-ax.set_title("ccpp: error vs spacing (B1)")
+ax.set_title("ccpp: error vs spacing")
 ax.legend()
 ax.grid(True, alpha=0.3)
 fig.tight_layout()
@@ -73,13 +73,13 @@ plt.close(fig)
 
 # (b) benefit vs spacing: same two guided modes + M30 zero reference line
 fig, ax = plt.subplots(figsize=(6.2, 4.2))
-ax.axhline(0.0, color="#8c8c8c", lw=1.3, label="M30 (reference)")
+ax.axhline(0.0, color="#8c8c8c", lw=1.3, label="M30")
 ax.plot(x, g["benefit_force_ii"].mean().values, "o-", color="#1f77b4", label="force_ii")
 ax.plot(x, g["benefit_teacher_sign_tmag"].mean().values, "o-", color="#2ca02c",
         label="teacher_sign_tmag")
 ax.set_xlabel("local spacing (dist. to nearest surviving train point, z-space)")
 ax.set_ylabel("benefit (|err_M30| - |err_guided|)")
-ax.set_title("ccpp: distillation benefit vs spacing (B2)")
+ax.set_title("ccpp: distillation benefit vs spacing")
 ax.legend()
 ax.grid(True, alpha=0.3)
 fig.tight_layout()
