@@ -20,16 +20,14 @@ $\texttt{prediction\_error} = \texttt{pred\_y} - \texttt{encoded\_Y}$:
 \begin{itemize}
   \item \textbf{Type~I feedback} (fired when the prediction is too low,
     $\texttt{prediction\_error} < 0$) reinforces clauses and, in the regression setting,
-    pairs with a weight increment---it raises the prediction. Type~I includes stochastic
-    literal inclusion and is the mechanism by which the model grows its representation.
+    pairs with an increment, i.e. it raises the prediction. Type~I is the mechanism by which the model grows its representation.
   \item \textbf{Type~II feedback} (fired when the prediction is too high,
     $\texttt{prediction\_error} > 0$) erodes clauses toward inactivity and pairs with a
-    weight decrement---it lowers the prediction. Type~II is self-limiting: it can only
-    drive clause contributions down (bounded at zero), so it cannot run away.
+    weight decrement, i.e. it lowers the prediction. Type~II is self-limiting: it can only
+    drive clause contributions down (bounded at zero).
 \end{itemize}
 
 The magnitude of each update is set stochastically through
 $\texttt{update\_p} = (\texttt{magnitude}/T)^2$, where $\texttt{magnitude}$ is normally
-the absolute prediction error. This asymmetry between the two feedback types---one
-unbounded and expansive, one bounded and contractive---is central to the stability
-results below.
+the absolute prediction error. This asymmetry between the two types of feedback, where one is 
+unbounded and expansive, and the other is bounded and contractive, is a central feature of the learning mechanism.

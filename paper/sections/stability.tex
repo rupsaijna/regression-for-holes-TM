@@ -11,11 +11,11 @@ a significant gain ($+0.175$, $t=2.33$) by acting on samples the baseline ignore
 never diverges---Type~II can only erode, so the update is self-limiting. Routing by the
 teacher's sign (\texttt{teacher\_sign}) achieves the best single result on ccpp ($+0.529$,
 $t=3.09$) but diverges on airquality (mean $-17.4$, individual seeds at $-5, -21, -80$;
-standard deviation $25.4$). The mechanism of the divergence is precisely the unbounded
+standard deviation $25.4$). The mechanism of the divergence is the unbounded
 feedback type: on a disagreement sample where the student over-predicts (error $>0$) but
 the teacher under-predicts, \texttt{teacher\_sign} fires Type~I, pushing an
-already-too-high prediction higher---a positive-feedback loop with no upper bound.
-\texttt{force\_ii} is immune because it never selects the raising direction.
+already-too-high prediction higher, which creates a positive-feedback loop with no upper bound.
+\texttt{force\_ii} is immune to this particular negative because it never selects the raising direction.
 
 \paragraph{Bounding either the type or the magnitude removes the divergence.}
 Two fixes both eliminate the instability (airquality standard deviation drops from $25.4$
@@ -24,8 +24,8 @@ to $\approx\!0.23$; Table~\ref{tab:stability}). Dropping the Type~I branch
 signal (airquality $\approx\!0$, energy still significantly harmful). Bounding the
 magnitude to the teacher's frozen error (\texttt{teacher\_sign\_tmag}) is better on every
 axis: airquality $+0.107$ (positive), energy harm roughly halved ($-0.152$ vs $-0.377$),
-and the lowest variance throughout. This was the first mechanism we found that makes a bad
-teacher meaningfully less harmful rather than merely amplifying it.
+and the lowest variance throughout. This mechanism effectively made a bad
+teacher meaningfully less harmful rather than amplifying it.
 
 \begin{table}[t]
 \centering

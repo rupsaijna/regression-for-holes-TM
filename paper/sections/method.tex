@@ -29,10 +29,8 @@ panel), \textbf{beijing} (hourly PM2.5), and \textbf{nyse}/\textbf{nyse\_log} (n
 trading volume, whose raw target is heavy-tailed---spanning $10^2$ to $10^8$
 shares---while \texttt{nyse\_log} is its log-transformed, better-behaved control). These
 objective differences---from smooth physical outputs to heavy-tailed financial volume and
-bimodal traffic---mean the datasets differ not only in teacher quality but in spacing
-structure, which is exactly the axis the study probes. All loaders keep numeric features
-only, drop missing rows, and use a fixed per-dataset train/test split; the large
-time-series sets are strided down to keep the CPU Tsetlin Machine tractable.
+bimodal traffic---mean the datasets differ not only in teacher quality but also in spacing
+structure. All loaders keep numeric features only, drop missing rows, and use a fixed per-dataset train/test split; the large time-series sets are strided down to keep the CPU TM tractable.
 
 \subsection{Teacher-guided clause feedback}
 \label{sec:tgcf}
@@ -61,10 +59,10 @@ reproducing the baseline arm identically across experiments.
 \label{sec:family}
 
 We develop the mechanisms as a sequence of small, versioned modifications. Each named
-mode below corresponds to a column in the results tables, cited here for reference.
+mode below corresponds to a column in the results tables, described here for reference.
 
 \begin{itemize}
-  \item \textbf{Baseline blend} (referred to as \texttt{uniform} in
+  \item \textbf{Baseline} (referred to as \texttt{uniform} in
     Tables~\ref{tab:adaptive}--\ref{tab:stability}): the teacher fires at a fixed
     probability $p_{\text{teacher}}$ on same-side samples with opposite-side samples
     ignored; this is the same-side blend and the reference arm all gains are measured
@@ -77,8 +75,7 @@ mode below corresponds to a column in the results tables, cited here for referen
   \item \textbf{Opposite-side type override} (\texttt{force\_ii}, \texttt{teacher\_sign}
     in Tables~\ref{tab:tmag} and~\ref{tab:stability}): on disagreement samples, override
     the feedback type while keeping the student's error magnitude---\texttt{force\_ii}
-    always fires the bounded Type~II, whereas \texttt{teacher\_sign} routes the type by the
-    teacher's error sign.
+    always fires the bounded Type~II, whereas \texttt{teacher\_sign} routes the feedback type by the teacher's error sign.
   \item \textbf{Stability fixes} (\texttt{teacher\_sign\_ii}, \texttt{teacher\_sign\_tmag}
     in Table~\ref{tab:stability}): \texttt{teacher\_sign\_ii} drops the runaway-prone
     Type~I branch; \texttt{teacher\_sign\_tmag} keeps the routing but sources the update

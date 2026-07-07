@@ -6,10 +6,7 @@ and across applications. On the architectural side, the Convolutional Tsetlin Ma
 extends the model to image data~\cite{granmo2019convtm}, integer-weighted clauses compress
 the clause representation while improving interpretability~\cite{abeyrathna2021integer},
 and the Regression Tsetlin Machine adapts the clause-vote output to continuous
-targets~\cite{abeyrathna2020regression}---the setting we build on. TM Composites further
-combine specialised machines to reach competitive image-classification
-accuracy~\cite{gronningsaeter2024composites}. On the application side, Tsetlin Machines
-have been used to discover interpretable rules in natural language
+targets~\cite{abeyrathna2020regression}, and this is the setting we build on. On the application side, Tsetlin Machines have been used to discover interpretable rules in natural language
 processing~\cite{saha2023nlprules}, to model relational structure for language
 understanding~\cite{saha2022relational}, and to fuse heterogeneous data sources
 efficiently~\cite{saha2023datafusion}. A common thread is interpretability: because
@@ -17,7 +14,7 @@ predictions are assembled from human-readable clauses, the learned model can be 
 directly.
 
 Knowledge distillation, by contrast, has been studied extensively for neural
-networks~\cite{hinton2015distilling} but remains largely unexplored for Tsetlin Machines,
+networks~\cite{hinton2015distilling} but remains largely unexplored for TMs,
 and existing recipes target output matching rather than the clause-level feedback that
 gives the TM its transparency. Our work addresses this gap by distilling directly through
 the Type~I/Type~II feedback signal.
