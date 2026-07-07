@@ -1,0 +1,6 @@
+method,pearson_raw,spearman_raw,pearson_clip,spearman_clip
+uniform,0.673,0.4,0.673,0.4
+force_ii,0.197,0.4,0.197,0.4
+force_ii_tmag,0.711,0.4,0.711,0.4
+teacher_sign_tmag,0.518,0.4,0.518,0.4
+sameside_tmag,0.778,0.8,0.778,0.8

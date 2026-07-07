@@ -1,0 +1,106 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[ccpp/structured] ep=30 seed=42: M100=4.9348 M20=4.9587 u0.3=5.1871 u0.5=4.9655
+    sf=0.3 f=0.5: guided=5.5962 (unguided 5.1871)
+    sf=0.3 f=0.75: guided=5.1366 (unguided 5.1871)
+    sf=0.3 f=1.0: guided=5.0964 (unguided 5.1871)
+    sf=0.5 f=0.5: guided=5.2927 (unguided 4.9655)
+    sf=0.5 f=0.75: guided=5.0723 (unguided 4.9655)
+    sf=0.5 f=1.0: guided=4.8005 (unguided 4.9655)
+[ccpp/structured] ep=30 seed=43: M100=5.6156 M20=5.1819 u0.3=5.6218 u0.5=5.3936
+    sf=0.3 f=0.5: guided=5.0250 (unguided 5.6218)
+    sf=0.3 f=0.75: guided=4.6344 (unguided 5.6218)
+    sf=0.3 f=1.0: guided=4.8548 (unguided 5.6218)
+    sf=0.5 f=0.5: guided=5.3044 (unguided 5.3936)
+    sf=0.5 f=0.75: guided=4.7546 (unguided 5.3936)
+    sf=0.5 f=1.0: guided=4.9289 (unguided 5.3936)
+[ccpp/structured] ep=30 seed=44: M100=5.0116 M20=5.2151 u0.3=4.7741 u0.5=5.2556
+    sf=0.3 f=0.5: guided=4.7363 (unguided 4.7741)
+    sf=0.3 f=0.75: guided=4.5179 (unguided 4.7741)
+    sf=0.3 f=1.0: guided=4.5600 (unguided 4.7741)
+    sf=0.5 f=0.5: guided=4.7967 (unguided 5.2556)
+    sf=0.5 f=0.75: guided=4.9990 (unguided 5.2556)
+    sf=0.5 f=1.0: guided=4.8283 (unguided 5.2556)
+[ccpp/structured] ep=30 seed=45: M100=5.3026 M20=4.7278 u0.3=5.0948 u0.5=4.8924
+    sf=0.3 f=0.5: guided=5.2025 (unguided 5.0948)
+    sf=0.3 f=0.75: guided=5.1004 (unguided 5.0948)
+    sf=0.3 f=1.0: guided=4.5997 (unguided 5.0948)
+    sf=0.5 f=0.5: guided=4.8241 (unguided 4.8924)
+    sf=0.5 f=0.75: guided=5.3146 (unguided 4.8924)
+    sf=0.5 f=1.0: guided=4.7912 (unguided 4.8924)
+[ccpp/structured] ep=30 seed=46: M100=5.0030 M20=5.3639 u0.3=5.4051 u0.5=5.2735
+    sf=0.3 f=0.5: guided=5.4544 (unguided 5.4051)
+    sf=0.3 f=0.75: guided=4.9961 (unguided 5.4051)
+    sf=0.3 f=1.0: guided=4.8823 (unguided 5.4051)
+    sf=0.5 f=0.5: guided=4.8881 (unguided 5.2735)
+    sf=0.5 f=0.75: guided=4.9469 (unguided 5.2735)
+    sf=0.5 f=1.0: guided=4.8330 (unguided 5.2735)
+[ccpp/structured] ep=30 seed=47: M100=5.3772 M20=4.8453 u0.3=4.9978 u0.5=5.3416
+    sf=0.3 f=0.5: guided=4.8126 (unguided 4.9978)
+    sf=0.3 f=0.75: guided=4.6964 (unguided 4.9978)
+    sf=0.3 f=1.0: guided=4.5092 (unguided 4.9978)
+    sf=0.5 f=0.5: guided=5.3164 (unguided 5.3416)
+    sf=0.5 f=0.75: guided=4.9507 (unguided 5.3416)
+    sf=0.5 f=1.0: guided=5.0879 (unguided 5.3416)
+[ccpp/structured] ep=100 seed=42: M100=4.6495 M20=4.8685 u0.3=6.0424 u0.5=4.9484
+    sf=0.3 f=0.5: guided=4.9856 (unguided 6.0424)
+    sf=0.3 f=0.75: guided=5.2827 (unguided 6.0424)
+    sf=0.3 f=1.0: guided=5.0042 (unguided 6.0424)
+    sf=0.5 f=0.5: guided=4.9455 (unguided 4.9484)
+    sf=0.5 f=0.75: guided=4.7780 (unguided 4.9484)
+    sf=0.5 f=1.0: guided=4.7360 (unguided 4.9484)
+[ccpp/structured] ep=100 seed=43: M100=4.7618 M20=5.3940 u0.3=5.9444 u0.5=5.1289
+    sf=0.3 f=0.5: guided=5.7202 (unguided 5.9444)
+    sf=0.3 f=0.75: guided=5.2301 (unguided 5.9444)
+    sf=0.3 f=1.0: guided=4.8235 (unguided 5.9444)
+    sf=0.5 f=0.5: guided=5.1332 (unguided 5.1289)
+    sf=0.5 f=0.75: guided=4.5950 (unguided 5.1289)
+    sf=0.5 f=1.0: guided=4.6802 (unguided 5.1289)
+[ccpp/structured] ep=100 seed=44: M100=4.9334 M20=4.7849 u0.3=4.8467 u0.5=4.7444
+    sf=0.3 f=0.5: guided=5.2480 (unguided 4.8467)
+    sf=0.3 f=0.75: guided=4.6568 (unguided 4.8467)
+    sf=0.3 f=1.0: guided=4.8391 (unguided 4.8467)
+    sf=0.5 f=0.5: guided=4.9861 (unguided 4.7444)
+    sf=0.5 f=0.75: guided=4.6469 (unguided 4.7444)
+    sf=0.5 f=1.0: guided=4.5753 (unguided 4.7444)
+[ccpp/structured] ep=100 seed=45: M100=4.5805 M20=4.6862 u0.3=4.8495 u0.5=4.8035
+    sf=0.3 f=0.5: guided=4.6409 (unguided 4.8495)
+    sf=0.3 f=0.75: guided=4.9431 (unguided 4.8495)
+    sf=0.3 f=1.0: guided=4.9783 (unguided 4.8495)
+    sf=0.5 f=0.5: guided=5.0019 (unguided 4.8035)
+    sf=0.5 f=0.75: guided=4.9940 (unguided 4.8035)
+    sf=0.5 f=1.0: guided=4.8975 (unguided 4.8035)
+[ccpp/structured] ep=100 seed=46: M100=5.0682 M20=5.0454 u0.3=5.4021 u0.5=5.4491
+    sf=0.3 f=0.5: guided=5.3189 (unguided 5.4021)
+    sf=0.3 f=0.75: guided=4.7469 (unguided 5.4021)
+    sf=0.3 f=1.0: guided=4.8762 (unguided 5.4021)
+    sf=0.5 f=0.5: guided=5.4643 (unguided 5.4491)
+    sf=0.5 f=0.75: guided=5.1085 (unguided 5.4491)
+    sf=0.5 f=1.0: guided=4.7609 (unguided 5.4491)
+[ccpp/structured] ep=100 seed=47: M100=4.6483 M20=5.5128 u0.3=4.8318 u0.5=5.4454
+    sf=0.3 f=0.5: guided=4.3944 (unguided 4.8318)
+    sf=0.3 f=0.75: guided=4.5532 (unguided 4.8318)
+    sf=0.3 f=1.0: guided=4.7531 (unguided 4.8318)
+    sf=0.5 f=0.5: guided=4.5369 (unguided 5.4454)
+    sf=0.5 f=0.75: guided=4.8287 (unguided 5.4454)
+    sf=0.5 f=1.0: guided=4.8993 (unguided 5.4454)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__ccpp__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__ccpp__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+   30      30%      0.00     5.1801   +0.0000 ± 0.0000
+   30      30%      0.50     5.1378   -0.0423 ± 0.3062
+   30      30%      0.75     4.8470   -0.3332 ± 0.3254
+   30      30%      1.00     4.7504   -0.4297 ± 0.2204
+   30      50%      0.00     5.1870   +0.0000 ± 0.0000
+   30      50%      0.50     5.0704   -0.1166 ± 0.2575
+   30      50%      0.75     5.0063   -0.1807 ± 0.3482
+   30      50%      1.00     4.8783   -0.3088 ± 0.1429
+  100      30%      0.00     5.3195   +0.0000 ± 0.0000
+  100      30%      0.50     5.0513   -0.2681 ± 0.4356
+  100      30%      0.75     4.9021   -0.4174 ± 0.3146
+  100      30%      1.00     4.8791   -0.4404 ± 0.4949
+  100      50%      0.00     5.0866   +0.0000 ± 0.0000
+  100      50%      0.50     5.0113   -0.0753 ± 0.3850
+  100      50%      0.75     4.8252   -0.2614 ± 0.2727
+  100      50%      1.00     4.7582   -0.3284 ± 0.2610

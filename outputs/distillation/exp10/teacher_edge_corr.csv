@@ -1,0 +1,5 @@
+method,pearson_raw,spearman_raw,pearson_clip,spearman_clip
+uniform,0.673,0.4,0.673,0.4
+teacher_sign,0.377,0.4,0.507,0.4
+teacher_sign_ii,0.33,0.4,0.33,0.4
+teacher_sign_tmag,0.518,0.4,0.518,0.4

@@ -1,0 +1,13 @@
+dataset,method,n,mean_impr,impr_t,mean_gain_vs_uniform,gain_t
+ccpp,uniform,6,0.35958,2.57,0.0,-
+ccpp,adapt_disagree,6,0.32195,2.11,-0.03762,-0.29
+ccpp,adapt_error,6,0.49637,4.64,0.1368,1.72
+airquality,uniform,6,0.07763,1.02,0.0,-
+airquality,adapt_disagree,6,0.09609,1.08,0.01847,0.36
+airquality,adapt_error,6,0.14688,1.51,0.06925,1.01
+california,uniform,6,-0.01336,-3.01,0.0,-
+california,adapt_disagree,6,-0.02858,-5.95,-0.01522,-2.37
+california,adapt_error,6,-0.06188,-7.08,-0.04852,-4.61
+energy,uniform,6,-0.06158,-1.12,0.0,-
+energy,adapt_disagree,6,-0.27745,-3.11,-0.21586,-2.26
+energy,adapt_error,6,-0.37176,-5.34,-0.31018,-6.25

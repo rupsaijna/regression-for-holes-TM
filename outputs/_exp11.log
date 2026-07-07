@@ -1,0 +1,57 @@
+[tmu LOCAL BUILD] vanilla_regressor_V4 loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor_v4.py
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+
+=== ccpp: 7654 train / 1914 test ===
+  seed 42: ung=5.2555 | uniform:+0.165 force_ii:+0.402 force_ii_tmag:+0.529 teacher_sign_tmag:+0.333 sameside_tmag:+0.553
+  seed 43: ung=5.2011 | uniform:+0.626 force_ii:+0.597 force_ii_tmag:+0.475 teacher_sign_tmag:+0.294 sameside_tmag:+0.162
+  seed 44: ung=4.8960 | uniform:+0.234 force_ii:+0.290 force_ii_tmag:+0.059 teacher_sign_tmag:-0.084 sameside_tmag:+0.251
+  seed 45: ung=5.5728 | uniform:+0.419 force_ii:-0.375 force_ii_tmag:+0.767 teacher_sign_tmag:+0.764 sameside_tmag:+0.429
+  seed 46: ung=5.5119 | uniform:+0.893 force_ii:+0.853 force_ii_tmag:+0.746 teacher_sign_tmag:+0.819 sameside_tmag:+0.884
+  seed 47: ung=4.7769 | uniform:-0.179 force_ii:-0.263 force_ii_tmag:+0.009 teacher_sign_tmag:+0.075 sameside_tmag:+0.075
+
+=== airquality: 5552 train / 1389 test ===
+  seed 42: ung=1.7011 | uniform:-0.312 force_ii:-0.173 force_ii_tmag:-0.416 teacher_sign_tmag:-0.322 sameside_tmag:-0.139
+  seed 43: ung=1.7238 | uniform:+0.269 force_ii:+0.173 force_ii_tmag:+0.184 teacher_sign_tmag:+0.261 sameside_tmag:+0.014
+  seed 44: ung=1.7426 | uniform:+0.198 force_ii:+0.376 force_ii_tmag:-0.211 teacher_sign_tmag:-0.058 sameside_tmag:+0.215
+  seed 45: ung=1.8177 | uniform:+0.145 force_ii:+0.335 force_ii_tmag:-0.522 teacher_sign_tmag:+0.092 sameside_tmag:+0.245
+  seed 46: ung=1.7991 | uniform:+0.066 force_ii:+0.077 force_ii_tmag:+0.077 teacher_sign_tmag:+0.441 sameside_tmag:-0.139
+  seed 47: ung=1.6290 | uniform:+0.099 force_ii:+0.265 force_ii_tmag:+0.049 teacher_sign_tmag:+0.230 sameside_tmag:+0.234
+
+=== california: 16512 train / 4128 test ===
+  seed 42: ung=0.6262 | uniform:-0.023 force_ii:-0.014 force_ii_tmag:-0.023 teacher_sign_tmag:-0.033 sameside_tmag:-0.010
+  seed 43: ung=0.6338 | uniform:-0.023 force_ii:-0.016 force_ii_tmag:-0.008 teacher_sign_tmag:-0.012 sameside_tmag:-0.054
+  seed 44: ung=0.6133 | uniform:-0.019 force_ii:-0.011 force_ii_tmag:-0.010 teacher_sign_tmag:-0.011 sameside_tmag:-0.028
+  seed 45: ung=0.6227 | uniform:-0.017 force_ii:-0.024 force_ii_tmag:-0.020 teacher_sign_tmag:-0.032 sameside_tmag:-0.017
+  seed 46: ung=0.6208 | uniform:+0.006 force_ii:-0.012 force_ii_tmag:-0.040 teacher_sign_tmag:-0.009 sameside_tmag:-0.033
+  seed 47: ung=0.6123 | uniform:-0.004 force_ii:-0.010 force_ii_tmag:-0.004 teacher_sign_tmag:-0.014 sameside_tmag:-0.031
+
+=== energy: 614 train / 154 test ===
+  seed 42: ung=1.1572 | uniform:-0.052 force_ii:-0.004 force_ii_tmag:-0.032 teacher_sign_tmag:-0.201 sameside_tmag:-0.041
+  seed 43: ung=1.1344 | uniform:-0.071 force_ii:-0.293 force_ii_tmag:-0.375 teacher_sign_tmag:-0.289 sameside_tmag:-0.088
+  seed 44: ung=1.1384 | uniform:+0.136 force_ii:-0.232 force_ii_tmag:+0.086 teacher_sign_tmag:-0.064 sameside_tmag:+0.100
+  seed 45: ung=1.4090 | uniform:+0.019 force_ii:-0.164 force_ii_tmag:+0.027 teacher_sign_tmag:-0.026 sameside_tmag:-0.011
+  seed 46: ung=0.9990 | uniform:-0.309 force_ii:-0.321 force_ii_tmag:-0.112 teacher_sign_tmag:-0.048 sameside_tmag:-0.073
+  seed 47: ung=1.4947 | uniform:-0.093 force_ii:-0.406 force_ii_tmag:-0.288 teacher_sign_tmag:-0.282 sameside_tmag:+0.033
+
+===== SUMMARY (impr = unguided - guided RMSE; gain = mode - uniform, paired) =====
+  dataset     method             mean_impr      t      std gain_vs_uni  gain_t
+  ccpp        uniform              +0.3596  +2.57   0.3422     +0.0000       -
+  ccpp        force_ii             +0.2506  +1.39   0.4402     -0.1089   -0.83
+  ccpp        force_ii_tmag        +0.4307  +3.52   0.3000     +0.0712    0.74
+  ccpp        teacher_sign_tmag    +0.3669  +2.72   0.3310     +0.0073    0.07
+  ccpp        sameside_tmag        +0.3923  +3.54   0.2717     +0.0327     0.3
+  airquality  uniform              +0.0776  +1.02   0.1860     +0.0000       -
+  airquality  force_ii             +0.1754  +2.33   0.1847     +0.0977    2.27
+  airquality  force_ii_tmag        -0.1401  -1.30   0.2631     -0.2177   -2.21
+  airquality  teacher_sign_tmag    +0.1074  +1.07   0.2455     +0.0298    0.38
+  airquality  sameside_tmag        +0.0717  +1.05   0.1679     -0.0059   -0.09
+  california  uniform              -0.0134  -3.01   0.0109     +0.0000       -
+  california  force_ii             -0.0145  -7.58   0.0047     -0.0011   -0.28
+  california  force_ii_tmag        -0.0174  -3.47   0.0123     -0.0040   -0.49
+  california  teacher_sign_tmag    -0.0185  -4.42   0.0103     -0.0052   -1.16
+  california  sameside_tmag        -0.0289  -5.18   0.0137     -0.0155   -2.08
+  energy      uniform              -0.0616  -1.12   0.1341     +0.0000       -
+  energy      force_ii             -0.2367  -4.53   0.1281     -0.1751   -2.86
+  energy      force_ii_tmag        -0.1155  -1.71   0.1659     -0.0540   -0.82
+  energy      teacher_sign_tmag    -0.1515  -3.37   0.1101     -0.0899   -1.32
+  energy      sameside_tmag        -0.0134  -0.51   0.0645     +0.0482    1.18

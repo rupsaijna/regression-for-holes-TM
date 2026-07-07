@@ -1,0 +1,92 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[ccpp/structured] ep=30 seed=42: M100=4.9348 M20=4.9587 u0.3=5.1871 u0.5=4.9655
+    sf=0.3 f=0.0: guided=5.1871 gap=+0.000
+    sf=0.3 f=0.25: guided=5.1801 gap=+0.028
+    sf=0.3 f=0.5: guided=5.5962 gap=-1.621
+    sf=0.3 f=0.75: guided=5.1366 gap=+0.200
+    sf=0.3 f=1.0: guided=5.0964 gap=+0.360
+    sf=0.5 f=0.0: guided=4.9655 gap=+0.000
+    sf=0.5 f=0.25: guided=5.2485 gap=-9.203
+    sf=0.5 f=0.5: guided=5.2927 gap=-10.641
+    sf=0.5 f=0.75: guided=5.0723 gap=-3.471
+    sf=0.5 f=1.0: guided=4.8005 gap=+5.367
+[ccpp/structured] ep=30 seed=43: M100=5.6156 M20=5.1819 u0.3=5.6218 u0.5=5.3936
+    sf=0.3 f=0.0: guided=5.6218 gap=+0.000
+    sf=0.3 f=0.25: guided=5.0320 gap=+94.868
+    sf=0.3 f=0.5: guided=5.0250 gap=+95.989
+    sf=0.3 f=0.75: guided=4.6344 gap=+158.818
+    sf=0.3 f=1.0: guided=4.8548 gap=+123.357
+    sf=0.5 f=0.0: guided=5.3936 gap=-0.000
+    sf=0.5 f=0.25: guided=4.9307 gap=-2.086
+    sf=0.5 f=0.5: guided=5.3044 gap=-0.402
+    sf=0.5 f=0.75: guided=4.7546 gap=-2.879
+    sf=0.5 f=1.0: guided=4.9289 gap=-2.094
+[ccpp/structured] ep=30 seed=44: M100=5.0116 M20=5.2151 u0.3=4.7741 u0.5=5.2556
+    sf=0.3 f=0.0: guided=4.7741 gap=-0.000
+    sf=0.3 f=0.25: guided=5.1079 gap=+1.406
+    sf=0.3 f=0.5: guided=4.7363 gap=-0.159
+    sf=0.3 f=0.75: guided=4.5179 gap=-1.078
+    sf=0.3 f=1.0: guided=4.5600 gap=-0.902
+    sf=0.5 f=0.0: guided=5.2556 gap=+0.000
+    sf=0.5 f=0.25: guided=4.8739 gap=+1.564
+    sf=0.5 f=0.5: guided=4.7967 gap=+1.881
+    sf=0.5 f=0.75: guided=4.9990 gap=+1.051
+    sf=0.5 f=1.0: guided=4.8283 gap=+1.751
+[ccpp/structured] ep=100 seed=42: M100=4.6495 M20=4.8685 u0.3=6.0424 u0.5=4.9484
+    sf=0.3 f=0.0: guided=6.0424 gap=+0.000
+    sf=0.3 f=0.25: guided=4.5500 gap=+1.071
+    sf=0.3 f=0.5: guided=4.9856 gap=+0.759
+    sf=0.3 f=0.75: guided=5.2827 gap=+0.545
+    sf=0.3 f=1.0: guided=5.0042 gap=+0.745
+    sf=0.5 f=0.0: guided=4.9484 gap=+0.000
+    sf=0.5 f=0.25: guided=5.1003 gap=-0.508
+    sf=0.5 f=0.5: guided=4.9455 gap=+0.010
+    sf=0.5 f=0.75: guided=4.7780 gap=+0.570
+    sf=0.5 f=1.0: guided=4.7360 gap=+0.711
+[ccpp/structured] ep=100 seed=43: M100=4.7618 M20=5.3940 u0.3=5.9444 u0.5=5.1289
+    sf=0.3 f=0.0: guided=5.9444 gap=+0.000
+    sf=0.3 f=0.25: guided=4.7074 gap=+1.046
+    sf=0.3 f=0.5: guided=5.7202 gap=+0.190
+    sf=0.3 f=0.75: guided=5.2301 gap=+0.604
+    sf=0.3 f=1.0: guided=4.8235 gap=+0.948
+    sf=0.5 f=0.0: guided=5.1289 gap=+0.000
+    sf=0.5 f=0.25: guided=5.0030 gap=+0.343
+    sf=0.5 f=0.5: guided=5.1332 gap=-0.012
+    sf=0.5 f=0.75: guided=4.5950 gap=+1.454
+    sf=0.5 f=1.0: guided=4.6802 gap=+1.222
+[ccpp/structured] ep=100 seed=44: M100=4.9334 M20=4.7849 u0.3=4.8467 u0.5=4.7444
+    sf=0.3 f=0.0: guided=4.8467 gap=-0.000
+    sf=0.3 f=0.25: guided=4.7212 gap=-1.447
+    sf=0.3 f=0.5: guided=5.2480 gap=+4.629
+    sf=0.3 f=0.75: guided=4.6568 gap=-2.190
+    sf=0.3 f=1.0: guided=4.8391 gap=-0.087
+    sf=0.5 f=0.0: guided=4.7444 gap=-0.000
+    sf=0.5 f=0.25: guided=4.7128 gap=-0.167
+    sf=0.5 f=0.5: guided=4.9861 gap=+1.279
+    sf=0.5 f=0.75: guided=4.6469 gap=-0.516
+    sf=0.5 f=1.0: guided=4.5753 gap=-0.895
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__ccpp__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__ccpp__structured.png
+
+  ep  studentMask    f   gap_closed   guidedRMSE  (unguided / M100)
+   30      30%      0.00   +0.000        5.1943   (5.1943 / 5.1873)
+   30      30%      0.25   +32.100        5.1066   (5.1943 / 5.1873)
+   30      30%      0.50   +31.403        5.1192   (5.1943 / 5.1873)
+   30      30%      0.75   +52.646        4.7630   (5.1943 / 5.1873)
+   30      30%      1.00   +40.938        4.8371   (5.1943 / 5.1873)
+   30      50%      0.00   +0.000        5.2049   (5.2049 / 5.1873)
+   30      50%      0.25   -3.241        5.0177   (5.2049 / 5.1873)
+   30      50%      0.50   -3.054        5.1313   (5.2049 / 5.1873)
+   30      50%      0.75   -1.766        4.9419   (5.2049 / 5.1873)
+   30      50%      1.00   +1.675        4.8526   (5.2049 / 5.1873)
+  100      30%      0.00   +0.000        5.6112   (5.6112 / 4.7816)
+  100      30%      0.25   +0.223        4.6595   (5.6112 / 4.7816)
+  100      30%      0.50   +1.859        5.3179   (5.6112 / 4.7816)
+  100      30%      0.75   -0.347        5.0566   (5.6112 / 4.7816)
+  100      30%      1.00   +0.535        4.8890   (5.6112 / 4.7816)
+  100      50%      0.00   +0.000        4.9406   (4.9406 / 4.7816)
+  100      50%      0.25   -0.111        4.9387   (4.9406 / 4.7816)
+  100      50%      0.50   +0.426        5.0216   (4.9406 / 4.7816)
+  100      50%      0.75   +0.503        4.6733   (4.9406 / 4.7816)
+  100      50%      1.00   +0.346        4.6638   (4.9406 / 4.7816)

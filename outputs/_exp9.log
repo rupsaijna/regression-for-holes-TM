@@ -1,0 +1,49 @@
+[tmu LOCAL BUILD] vanilla_regressor_V2 loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor_v2.py
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+
+=== ccpp: 7654 train / 1914 test ===
+  seed 42: ung=5.2555 | uniform:+0.165 force_ii:+0.402 teacher_sign:+0.744
+  seed 43: ung=5.2011 | uniform:+0.626 force_ii:+0.597 teacher_sign:+0.621
+  seed 44: ung=4.8960 | uniform:+0.234 force_ii:+0.290 teacher_sign:+0.087
+  seed 45: ung=5.5728 | uniform:+0.419 force_ii:-0.375 teacher_sign:+1.053
+  seed 46: ung=5.5119 | uniform:+0.893 force_ii:+0.853 teacher_sign:+0.814
+  seed 47: ung=4.7769 | uniform:-0.179 force_ii:-0.263 teacher_sign:-0.144
+
+=== airquality: 5552 train / 1389 test ===
+  seed 42: ung=1.7011 | uniform:-0.312 force_ii:-0.173 teacher_sign:-0.039
+  seed 43: ung=1.7238 | uniform:+0.269 force_ii:+0.173 teacher_sign:-21.492
+  seed 44: ung=1.7426 | uniform:+0.198 force_ii:+0.376 teacher_sign:-5.366
+  seed 45: ung=1.8177 | uniform:+0.145 force_ii:+0.335 teacher_sign:+0.124
+  seed 46: ung=1.7991 | uniform:+0.066 force_ii:+0.077 teacher_sign:-3.088
+  seed 47: ung=1.6290 | uniform:+0.099 force_ii:+0.265 teacher_sign:-79.855
+
+=== california: 16512 train / 4128 test ===
+  seed 42: ung=0.6262 | uniform:-0.023 force_ii:-0.014 teacher_sign:-0.018
+  seed 43: ung=0.6338 | uniform:-0.023 force_ii:-0.016 teacher_sign:-0.017
+  seed 44: ung=0.6133 | uniform:-0.019 force_ii:-0.011 teacher_sign:-0.001
+  seed 45: ung=0.6227 | uniform:-0.017 force_ii:-0.024 teacher_sign:+0.004
+  seed 46: ung=0.6208 | uniform:+0.006 force_ii:-0.012 teacher_sign:-0.008
+  seed 47: ung=0.6123 | uniform:-0.004 force_ii:-0.010 teacher_sign:-0.015
+
+=== energy: 614 train / 154 test ===
+  seed 42: ung=1.1572 | uniform:-0.052 force_ii:-0.004 teacher_sign:-0.136
+  seed 43: ung=1.1344 | uniform:-0.071 force_ii:-0.293 teacher_sign:-0.364
+  seed 44: ung=1.1384 | uniform:+0.136 force_ii:-0.232 teacher_sign:-0.394
+  seed 45: ung=1.4090 | uniform:+0.019 force_ii:-0.164 teacher_sign:+0.151
+  seed 46: ung=0.9990 | uniform:-0.309 force_ii:-0.321 teacher_sign:-0.350
+  seed 47: ung=1.4947 | uniform:-0.093 force_ii:-0.406 teacher_sign:-0.577
+
+===== SUMMARY (impr = unguided - guided RMSE; gain = mode - uniform, paired) =====
+  dataset     method        mean_impr      t gain_vs_uni  gain_t
+  ccpp        uniform         +0.3596  +2.57     +0.0000       -
+  ccpp        force_ii        +0.2506  +1.39     -0.1089   -0.83
+  ccpp        teacher_sign    +0.5293  +3.09     +0.1697    1.32
+  airquality  uniform         +0.0776  +1.02     +0.0000       -
+  airquality  force_ii        +0.1754  +2.33     +0.0977    2.27
+  airquality  teacher_sign   -18.2858  -1.57    -18.3634   -1.58
+  california  uniform         -0.0134  -3.01     +0.0000       -
+  california  force_ii        -0.0145  -7.58     -0.0011   -0.28
+  california  teacher_sign    -0.0090  -2.69     +0.0043     0.8
+  energy      uniform         -0.0616  -1.12     +0.0000       -
+  energy      force_ii        -0.2367  -4.53     -0.1751   -2.86
+  energy      teacher_sign    -0.2782  -2.95     -0.2166   -2.21

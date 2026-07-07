@@ -1,0 +1,106 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[energy/structured] ep=30 seed=42: M100=1.2653 M20=1.3691 u0.3=1.4450 u0.5=2.6544
+    sf=0.3 f=0.5: guided=1.8162 (unguided 1.4450)
+    sf=0.3 f=0.75: guided=2.0128 (unguided 1.4450)
+    sf=0.3 f=1.0: guided=2.0478 (unguided 1.4450)
+    sf=0.5 f=0.5: guided=2.6249 (unguided 2.6544)
+    sf=0.5 f=0.75: guided=2.8512 (unguided 2.6544)
+    sf=0.5 f=1.0: guided=3.0346 (unguided 2.6544)
+[energy/structured] ep=30 seed=43: M100=1.1191 M20=1.4740 u0.3=1.3545 u0.5=1.7509
+    sf=0.3 f=0.5: guided=1.6424 (unguided 1.3545)
+    sf=0.3 f=0.75: guided=1.6422 (unguided 1.3545)
+    sf=0.3 f=1.0: guided=1.7416 (unguided 1.3545)
+    sf=0.5 f=0.5: guided=1.8435 (unguided 1.7509)
+    sf=0.5 f=0.75: guided=1.8561 (unguided 1.7509)
+    sf=0.5 f=1.0: guided=2.1170 (unguided 1.7509)
+[energy/structured] ep=30 seed=44: M100=1.2234 M20=1.3449 u0.3=1.5827 u0.5=1.5419
+    sf=0.3 f=0.5: guided=1.4537 (unguided 1.5827)
+    sf=0.3 f=0.75: guided=1.6015 (unguided 1.5827)
+    sf=0.3 f=1.0: guided=1.6505 (unguided 1.5827)
+    sf=0.5 f=0.5: guided=1.8460 (unguided 1.5419)
+    sf=0.5 f=0.75: guided=2.1653 (unguided 1.5419)
+    sf=0.5 f=1.0: guided=1.9991 (unguided 1.5419)
+[energy/structured] ep=30 seed=45: M100=1.2783 M20=1.6356 u0.3=1.7442 u0.5=2.1356
+    sf=0.3 f=0.5: guided=2.0460 (unguided 1.7442)
+    sf=0.3 f=0.75: guided=2.0205 (unguided 1.7442)
+    sf=0.3 f=1.0: guided=2.0997 (unguided 1.7442)
+    sf=0.5 f=0.5: guided=2.2133 (unguided 2.1356)
+    sf=0.5 f=0.75: guided=2.5425 (unguided 2.1356)
+    sf=0.5 f=1.0: guided=2.6675 (unguided 2.1356)
+[energy/structured] ep=30 seed=46: M100=1.3858 M20=1.4986 u0.3=1.4006 u0.5=2.2080
+    sf=0.3 f=0.5: guided=1.5478 (unguided 1.4006)
+    sf=0.3 f=0.75: guided=1.7205 (unguided 1.4006)
+    sf=0.3 f=1.0: guided=1.5971 (unguided 1.4006)
+    sf=0.5 f=0.5: guided=2.3993 (unguided 2.2080)
+    sf=0.5 f=0.75: guided=2.5253 (unguided 2.2080)
+    sf=0.5 f=1.0: guided=2.6427 (unguided 2.2080)
+[energy/structured] ep=30 seed=47: M100=1.3406 M20=1.5101 u0.3=1.8038 u0.5=2.6640
+    sf=0.3 f=0.5: guided=1.9774 (unguided 1.8038)
+    sf=0.3 f=0.75: guided=2.0391 (unguided 1.8038)
+    sf=0.3 f=1.0: guided=1.9351 (unguided 1.8038)
+    sf=0.5 f=0.5: guided=2.8429 (unguided 2.6640)
+    sf=0.5 f=0.75: guided=2.5046 (unguided 2.6640)
+    sf=0.5 f=1.0: guided=2.6990 (unguided 2.6640)
+[energy/structured] ep=100 seed=42: M100=0.8899 M20=1.2755 u0.3=0.9862 u0.5=2.4386
+    sf=0.3 f=0.5: guided=1.2407 (unguided 0.9862)
+    sf=0.3 f=0.75: guided=1.1102 (unguided 0.9862)
+    sf=0.3 f=1.0: guided=1.1844 (unguided 0.9862)
+    sf=0.5 f=0.5: guided=1.9301 (unguided 2.4386)
+    sf=0.5 f=0.75: guided=2.1535 (unguided 2.4386)
+    sf=0.5 f=1.0: guided=2.1710 (unguided 2.4386)
+[energy/structured] ep=100 seed=43: M100=0.8699 M20=1.1613 u0.3=1.0379 u0.5=1.1859
+    sf=0.3 f=0.5: guided=1.1509 (unguided 1.0379)
+    sf=0.3 f=0.75: guided=1.0934 (unguided 1.0379)
+    sf=0.3 f=1.0: guided=1.2591 (unguided 1.0379)
+    sf=0.5 f=0.5: guided=1.1870 (unguided 1.1859)
+    sf=0.5 f=0.75: guided=1.3502 (unguided 1.1859)
+    sf=0.5 f=1.0: guided=1.3052 (unguided 1.1859)
+[energy/structured] ep=100 seed=44: M100=1.1853 M20=1.1210 u0.3=0.9827 u0.5=1.1587
+    sf=0.3 f=0.5: guided=1.1302 (unguided 0.9827)
+    sf=0.3 f=0.75: guided=1.2457 (unguided 0.9827)
+    sf=0.3 f=1.0: guided=1.1062 (unguided 0.9827)
+    sf=0.5 f=0.5: guided=1.2660 (unguided 1.1587)
+    sf=0.5 f=0.75: guided=1.2274 (unguided 1.1587)
+    sf=0.5 f=1.0: guided=1.3835 (unguided 1.1587)
+[energy/structured] ep=100 seed=45: M100=0.8744 M20=1.2240 u0.3=1.1735 u0.5=1.5004
+    sf=0.3 f=0.5: guided=1.2819 (unguided 1.1735)
+    sf=0.3 f=0.75: guided=1.3338 (unguided 1.1735)
+    sf=0.3 f=1.0: guided=1.2330 (unguided 1.1735)
+    sf=0.5 f=0.5: guided=1.6629 (unguided 1.5004)
+    sf=0.5 f=0.75: guided=1.5868 (unguided 1.5004)
+    sf=0.5 f=1.0: guided=1.7137 (unguided 1.5004)
+[energy/structured] ep=100 seed=46: M100=0.8729 M20=1.0958 u0.3=1.0466 u0.5=1.7932
+    sf=0.3 f=0.5: guided=1.0533 (unguided 1.0466)
+    sf=0.3 f=0.75: guided=1.1424 (unguided 1.0466)
+    sf=0.3 f=1.0: guided=1.0207 (unguided 1.0466)
+    sf=0.5 f=0.5: guided=1.7337 (unguided 1.7932)
+    sf=0.5 f=0.75: guided=1.5890 (unguided 1.7932)
+    sf=0.5 f=1.0: guided=1.7586 (unguided 1.7932)
+[energy/structured] ep=100 seed=47: M100=0.8968 M20=0.9352 u0.3=1.2313 u0.5=1.9266
+    sf=0.3 f=0.5: guided=1.4564 (unguided 1.2313)
+    sf=0.3 f=0.75: guided=1.3808 (unguided 1.2313)
+    sf=0.3 f=1.0: guided=1.8010 (unguided 1.2313)
+    sf=0.5 f=0.5: guided=1.8840 (unguided 1.9266)
+    sf=0.5 f=0.75: guided=1.9695 (unguided 1.9266)
+    sf=0.5 f=1.0: guided=2.0353 (unguided 1.9266)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__energy__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__energy__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+   30      30%      0.00     1.5551   +0.0000 ± 0.0000
+   30      30%      0.50     1.7473   +0.1921 ± 0.1627
+   30      30%      0.75     1.8394   +0.2843 ± 0.1605
+   30      30%      1.00     1.8453   +0.2902 ± 0.1802
+   30      50%      0.00     2.1591   +0.0000 ± 0.0000
+   30      50%      0.50     2.2950   +0.1359 ± 0.1047
+   30      50%      0.75     2.4075   +0.2484 ± 0.2449
+   30      50%      1.00     2.5266   +0.3675 ± 0.1583
+  100      30%      0.00     1.0763   +0.0000 ± 0.0000
+  100      30%      0.50     1.2189   +0.1426 ± 0.0815
+  100      30%      0.75     1.2177   +0.1414 ± 0.0645
+  100      30%      1.00     1.2674   +0.1911 ± 0.1885
+  100      50%      0.00     1.6673   +0.0000 ± 0.0000
+  100      50%      0.50     1.6106   -0.0567 ± 0.2170
+  100      50%      0.75     1.6461   -0.0212 ± 0.1640
+  100      50%      1.00     1.7279   +0.0606 ± 0.1697

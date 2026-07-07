@@ -1,0 +1,53 @@
+[tmu LOCAL BUILD] vanilla_regressor_V3 loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor_v3.py
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+
+=== ccpp: 7654 train / 1914 test ===
+  seed 42: ung=5.2555 | uniform:+0.165 teacher_sign:+0.669 teacher_sign_ii:+0.623 teacher_sign_tmag:+0.333
+  seed 43: ung=5.2011 | uniform:+0.626 teacher_sign:+0.566 teacher_sign_ii:+0.542 teacher_sign_tmag:+0.294
+  seed 44: ung=4.8960 | uniform:+0.234 teacher_sign:+0.178 teacher_sign_ii:+0.210 teacher_sign_tmag:-0.084
+  seed 45: ung=5.5728 | uniform:+0.419 teacher_sign:+0.364 teacher_sign_ii:+0.075 teacher_sign_tmag:+0.764
+  seed 46: ung=5.5119 | uniform:+0.893 teacher_sign:+0.870 teacher_sign_ii:+0.920 teacher_sign_tmag:+0.819
+  seed 47: ung=4.7769 | uniform:-0.179 teacher_sign:-0.086 teacher_sign_ii:-0.330 teacher_sign_tmag:+0.075
+
+=== airquality: 5552 train / 1389 test ===
+  seed 42: ung=1.7011 | uniform:-0.312 teacher_sign:-0.357 teacher_sign_ii:-0.283 teacher_sign_tmag:-0.322
+  seed 43: ung=1.7238 | uniform:+0.269 teacher_sign:-27.652 teacher_sign_ii:+0.215 teacher_sign_tmag:+0.261
+  seed 44: ung=1.7426 | uniform:+0.198 teacher_sign:-5.623 teacher_sign_ii:-0.195 teacher_sign_tmag:-0.058
+  seed 45: ung=1.8177 | uniform:+0.145 teacher_sign:-0.020 teacher_sign_ii:-0.015 teacher_sign_tmag:+0.092
+  seed 46: ung=1.7991 | uniform:+0.066 teacher_sign:-0.739 teacher_sign_ii:+0.366 teacher_sign_tmag:+0.441
+  seed 47: ung=1.6290 | uniform:+0.099 teacher_sign:-69.928 teacher_sign_ii:-0.096 teacher_sign_tmag:+0.230
+
+=== california: 16512 train / 4128 test ===
+  seed 42: ung=0.6262 | uniform:-0.023 teacher_sign:-0.025 teacher_sign_ii:-0.042 teacher_sign_tmag:-0.033
+  seed 43: ung=0.6338 | uniform:-0.023 teacher_sign:-0.031 teacher_sign_ii:-0.024 teacher_sign_tmag:-0.012
+  seed 44: ung=0.6133 | uniform:-0.019 teacher_sign:-0.028 teacher_sign_ii:-0.026 teacher_sign_tmag:-0.011
+  seed 45: ung=0.6227 | uniform:-0.017 teacher_sign:-0.007 teacher_sign_ii:+0.001 teacher_sign_tmag:-0.032
+  seed 46: ung=0.6208 | uniform:+0.006 teacher_sign:-0.019 teacher_sign_ii:-0.009 teacher_sign_tmag:-0.009
+  seed 47: ung=0.6123 | uniform:-0.004 teacher_sign:-0.032 teacher_sign_ii:-0.007 teacher_sign_tmag:-0.014
+
+=== energy: 614 train / 154 test ===
+  seed 42: ung=1.1572 | uniform:-0.052 teacher_sign:-0.046 teacher_sign_ii:-0.245 teacher_sign_tmag:-0.201
+  seed 43: ung=1.1344 | uniform:-0.071 teacher_sign:-0.225 teacher_sign_ii:-0.364 teacher_sign_tmag:-0.289
+  seed 44: ung=1.1384 | uniform:+0.136 teacher_sign:-0.708 teacher_sign_ii:-0.349 teacher_sign_tmag:-0.064
+  seed 45: ung=1.4090 | uniform:+0.019 teacher_sign:-0.239 teacher_sign_ii:-0.198 teacher_sign_tmag:-0.026
+  seed 46: ung=0.9990 | uniform:-0.309 teacher_sign:-0.342 teacher_sign_ii:-0.202 teacher_sign_tmag:-0.048
+  seed 47: ung=1.4947 | uniform:-0.093 teacher_sign:-0.700 teacher_sign_ii:-0.837 teacher_sign_tmag:-0.282
+
+===== SUMMARY (impr = unguided - guided RMSE; gain = mode - uniform, paired) =====
+  dataset     method             mean_impr      t      std gain_vs_uni  gain_t
+  ccpp        uniform              +0.3596  +2.57   0.3422     +0.0000       -
+  ccpp        teacher_sign         +0.4266  +3.30   0.3170     +0.0671    0.81
+  ccpp        teacher_sign_ii      +0.3402  +2.05   0.4069     -0.0193   -0.19
+  ccpp        teacher_sign_tmag    +0.3669  +2.72   0.3310     +0.0073    0.07
+  airquality  uniform              +0.0776  +1.02   0.1860     +0.0000       -
+  airquality  teacher_sign        -17.3864  -1.68  25.4070    -17.4641   -1.68
+  airquality  teacher_sign_ii      -0.0011  -0.01   0.2265     -0.0788    -0.9
+  airquality  teacher_sign_tmag    +0.1074  +1.07   0.2455     +0.0298    0.38
+  california  uniform              -0.0134  -3.01   0.0109     +0.0000       -
+  california  teacher_sign         -0.0237  -6.89   0.0084     -0.0104   -1.98
+  california  teacher_sign_ii      -0.0178  -3.05   0.0143     -0.0044   -0.94
+  california  teacher_sign_tmag    -0.0185  -4.42   0.0103     -0.0052   -1.16
+  energy      uniform              -0.0616  -1.12   0.1341     +0.0000       -
+  energy      teacher_sign         -0.3767  -3.73   0.2472     -0.3151   -2.49
+  energy      teacher_sign_ii      -0.3656  -4.06   0.2207     -0.3041   -2.83
+  energy      teacher_sign_tmag    -0.1515  -3.37   0.1101     -0.0899   -1.32

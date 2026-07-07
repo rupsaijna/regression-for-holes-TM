@@ -1,0 +1,13 @@
+dataset,method,n,mean_impr,impr_t,mean_gain_vs_uniform,gain_t
+ccpp,uniform,6,0.35958,2.57,0.0,-
+ccpp,force_ii,6,0.25065,1.39,-0.10893,-0.83
+ccpp,teacher_sign,6,0.52928,3.09,0.1697,1.32
+airquality,uniform,6,0.07763,1.02,0.0,-
+airquality,force_ii,6,0.17536,2.33,0.09773,2.27
+airquality,teacher_sign,6,-18.28578,-1.57,-18.36341,-1.58
+california,uniform,6,-0.01336,-3.01,0.0,-
+california,force_ii,6,-0.01451,-7.58,-0.00115,-0.28
+california,teacher_sign,6,-0.00903,-2.69,0.00433,0.8
+energy,uniform,6,-0.06158,-1.12,0.0,-
+energy,force_ii,6,-0.23671,-4.53,-0.17513,-2.86
+energy,teacher_sign,6,-0.27822,-2.95,-0.21664,-2.21

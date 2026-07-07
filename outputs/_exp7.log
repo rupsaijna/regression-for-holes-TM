@@ -1,0 +1,48 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+
+=== ccpp: 7654 train / 1914 test ===
+  seed 42: mean help=+0.0091  in-hole help=+0.0031 (610) surviving=+0.0119
+  seed 43: mean help=+0.0356  in-hole help=+0.0445 (540) surviving=+0.0321
+  seed 44: mean help=+0.0138  in-hole help=+0.0210 (614) surviving=+0.0104
+  seed 45: mean help=+0.0246  in-hole help=+0.0203 (569) surviving=+0.0264
+  seed 46: mean help=+0.0486  in-hole help=+0.0675 (579) surviving=+0.0404
+
+=== california: 16512 train / 4128 test ===
+  seed 42: mean help=-0.0230  in-hole help=-0.0306 (1302) surviving=-0.0195
+  seed 43: mean help=-0.0211  in-hole help=-0.0123 (1246) surviving=-0.0249
+  seed 44: mean help=-0.0227  in-hole help=-0.0124 (1250) surviving=-0.0272
+  seed 45: mean help=-0.0159  in-hole help=-0.0232 (1343) surviving=-0.0124
+  seed 46: mean help=+0.0086  in-hole help=+0.0154 (1251) surviving=+0.0057
+
+=== energy: 614 train / 154 test ===
+  seed 42: mean help=-0.0025  in-hole help=-0.0121 (40) surviving=+0.0009
+  seed 43: mean help=-0.0019  in-hole help=+0.0032 (48) surviving=-0.0041
+  seed 44: mean help=+0.0067  in-hole help=+0.0135 (41) surviving=+0.0042
+  seed 45: mean help=-0.0040  in-hole help=+0.0054 (39) surviving=-0.0072
+  seed 46: mean help=-0.0211  in-hole help=-0.0450 (32) surviving=-0.0149
+
+=== airquality: 5552 train / 1389 test ===
+  seed 42: mean help=-0.0255  in-hole help=-0.0452 (436) surviving=-0.0165
+  seed 43: mean help=+0.0359  in-hole help=+0.0219 (417) surviving=+0.0419
+  seed 44: mean help=+0.0291  in-hole help=+0.0211 (455) surviving=+0.0329
+  seed 45: mean help=+0.0204  in-hole help=+0.0073 (458) surviving=+0.0269
+  seed 46: mean help=+0.0075  in-hole help=+0.0142 (441) surviving=+0.0044
+
+===== in-hole vs surviving teacher help (normalized) =====
+  ccpp        in-hole=+0.0307  surviving=+0.0244  (in-hole frac 0.3043)
+  california  in-hole=-0.0129  surviving=-0.0157  (in-hole frac 0.3097)
+  energy      in-hole=-0.0050  surviving=-0.0044  (in-hole frac 0.2597)
+  airquality  in-hole=+0.0039  surviving=+0.0179  (in-hole frac 0.3178)
+
+===== descriptor <-> teacher_help (Spearman), per dataset + consensus =====
+  descriptor           ccpp california     energy airquality   mean  sign-consistent
+  in_hole             +0.03      +0.01      -0.01      -0.03   -0.00   no
+  local_density       +0.03      +0.05      -0.01      -0.00   +0.02   no
+  dist_nearest        +0.01      +0.04      -0.08      +0.00   -0.01   no
+  local_y_rough       -0.03      +0.02      +0.04      +0.03   +0.02   no
+  support_loss        +0.03      +0.02      -0.00      -0.04   +0.00   no
+  teacher_extra       +0.00      -0.04      -0.10      -0.02   -0.04   no
+  ts_disagree         +0.09      +0.00      +0.22      +0.07   +0.09   yes
+  err_unguided        +0.48      +0.13      +0.39      +0.45   +0.36   yes
+
+-> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/persample/

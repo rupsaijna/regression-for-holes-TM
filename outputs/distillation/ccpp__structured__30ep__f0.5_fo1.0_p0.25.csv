@@ -1,0 +1,2 @@
+dataset,mode,epochs,seed,f,f_opposite,p_start,p_end,n_core,n_kept_teacher,n_kept_student,n_val,rmse_M100,rmse_M20,rmse_M30_unguided,rmse_M30_guided,gap_closed
+ccpp,structured,30,42,0.5,1.0,0.25,,6505,5204,4553,1149,4.934788,4.958661,5.187135,688.791893,-2708.9802
