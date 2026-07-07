@@ -11,24 +11,26 @@ properties that are usually entangled: how accurate the teacher is, and how the 
 geometrically distributed.
 
 Four datasets serve as anchors for the per-region analysis, selected to span teacher
-quality. \textbf{Combined Cycle Power Plant}~\cite{tufekci2014ccpp} (ccpp,
+quality. \textbf{ccpp}~\cite{tufekci2014ccpp} (Combined Cycle Power Plant,
 $n\!\approx\!9.6$k) predicts a plant's net electrical output from ambient temperature,
 pressure, humidity, and exhaust vacuum; the relationship is nearly linear
 ($R^2\!\approx\!0.93$), making it the cleanest large set in the panel.
-\textbf{Airquality}~\cite{devito2008airquality} ($n\!\approx\!6.9$k) predicts benzene
+\textbf{airquality}~\cite{devito2008airquality} ($n\!\approx\!6.9$k) predicts benzene
 concentration from metal-oxide gas-sensor responses, and its test points are moderately
-unevenly spaced. \textbf{California Housing Prices}~\cite{pace1997california} (california, $n\!\approx\!20.6$k)
+unevenly spaced. \textbf{california}~\cite{pace1997california} ($n\!\approx\!20.6$k)
 predicts median house value from eight census predictors.
-\textbf{Energy Efficiency}~\cite{tsanas2012energy} (energy, $n\!=\!768$) predicts a
+\textbf{energy}~\cite{tsanas2012energy} (Energy Efficiency, $n\!=\!768$) predicts a
 building's heating load from eight shape parameters.
 
 The remaining eight datasets extend this range in two directions. Four are smaller,
-approximately linear sets: \textbf{autompg}, \textbf{realestate}, and the textbook
-\textbf{mortality} and \textbf{bloodfat} regressions. The other four are time series whose
-test points are concentrated or bimodal in feature space and are therefore unevenly
-spaced: \textbf{metro} (hourly interstate traffic volume, the most unevenly spaced set in
-the panel), \textbf{beijing} (hourly PM2.5), and \textbf{nyse} and \textbf{nyse\_log}
-(next-day trading volume). The raw \texttt{nyse} target is heavy-tailed, spanning roughly
+approximately linear sets: \textbf{autompg}~\cite{quinlan1993autompg},
+\textbf{realestate}~\cite{yeh2018realestate}, and the textbook
+\textbf{mortality}~\cite{mcdonald1973mortality} and
+\textbf{bloodfat}~\cite{sutanoy_datasets} regressions. The other four are time series whose
+test points are concentrated or bimodal in feature space and are therefore unevenly spaced:
+\textbf{metro}~\cite{uci_repository} (hourly interstate traffic volume, the most unevenly
+spaced set in the panel), \textbf{beijing}~\cite{liang2015beijing} (hourly PM2.5), and
+\textbf{nyse} and \textbf{nyse\_log}~\cite{gawlik2016nyse} (next-day trading volume). The raw \texttt{nyse} target is heavy-tailed, spanning roughly
 $10^2$ to $10^8$ shares, whereas \texttt{nyse\_log} is its log-transformed, better-behaved
 control. Across the twelve datasets the objectives therefore range from smooth physical
 outputs to heavy-tailed financial volume and bimodal traffic, so the datasets differ not
