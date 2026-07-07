@@ -1,0 +1,59 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[tmu LOCAL BUILD] vanilla_regressor_V4 loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor_v4.py
+
+=== ccpp: 7654 train / 1914 test ===
+  seed 42: spacing[min/med/max]=0.000/0.153/1.215
+  seed 43: spacing[min/med/max]=0.000/0.147/1.227
+  seed 44: spacing[min/med/max]=0.000/0.156/1.234
+  seed 45: spacing[min/med/max]=0.000/0.157/1.099
+  seed 46: spacing[min/med/max]=0.000/0.153/1.447
+  seed 47: spacing[min/med/max]=0.000/0.147/1.161
+
+=== airquality: 5552 train / 1389 test ===
+  seed 42: spacing[min/med/max]=0.112/0.547/2.674
+  seed 43: spacing[min/med/max]=0.084/0.553/2.747
+  seed 44: spacing[min/med/max]=0.112/0.569/2.674
+  seed 45: spacing[min/med/max]=0.112/0.585/2.674
+  seed 46: spacing[min/med/max]=0.084/0.572/2.674
+  seed 47: spacing[min/med/max]=0.084/0.540/2.674
+
+=== california: 16512 train / 4128 test ===
+  seed 42: spacing[min/med/max]=0.054/0.339/19.906
+  seed 43: spacing[min/med/max]=0.054/0.339/19.906
+  seed 44: spacing[min/med/max]=0.054/0.332/19.906
+  seed 45: spacing[min/med/max]=0.054/0.350/19.906
+  seed 46: spacing[min/med/max]=0.054/0.345/19.906
+  seed 47: spacing[min/med/max]=0.054/0.350/19.906
+
+=== energy: 614 train / 154 test ===
+  seed 42: spacing[min/med/max]=0.645/0.645/2.057
+  seed 43: spacing[min/med/max]=0.645/0.645/2.137
+  seed 44: spacing[min/med/max]=0.645/0.645/1.622
+  seed 45: spacing[min/med/max]=0.645/0.645/1.917
+  seed 46: spacing[min/med/max]=0.645/0.645/1.585
+  seed 47: spacing[min/med/max]=0.645/0.645/1.935
+
+===== SUMMARY: Spearman(spacing, .) over test points =====
+  B1 = error vs spacing (>0 => sparser = worse);  B2 = benefit vs spacing (>0 => helps more when sparse)
+
+  ccpp (n=11484, in-hole frac=0.305):
+    B1 err :  unguided=+0.02  M20=+0.02  force_ii=-0.01  teacher_sign_tmag=+0.00
+    B2 bnft:  force_ii=+0.04  teacher_sign_tmag=+0.02
+    B3 benefit in/out hole:  force_ii=+0.397/+0.194  teacher_sign_tmag=+0.458/+0.312
+
+  airquality (n=8334, in-hole frac=0.316):
+    B1 err :  unguided=+0.14  M20=+0.10  force_ii=+0.16  teacher_sign_tmag=+0.12
+    B2 bnft:  force_ii=-0.02  teacher_sign_tmag=+0.01
+    B3 benefit in/out hole:  force_ii=+0.164/+0.222  teacher_sign_tmag=+0.126/+0.109
+
+  california (n=24768, in-hole frac=0.313):
+    B1 err :  unguided=+0.06  M20=+0.06  force_ii=+0.05  teacher_sign_tmag=+0.05
+    B2 bnft:  force_ii=+0.03  teacher_sign_tmag=+0.03
+    B3 benefit in/out hole:  force_ii=-0.025/-0.016  teacher_sign_tmag=-0.031/-0.021
+
+  energy (n=924, in-hole frac=0.275):
+    B1 err :  unguided=+0.20  M20=+0.11  force_ii=+0.15  teacher_sign_tmag=+0.17
+    B2 bnft:  force_ii=+0.02  teacher_sign_tmag=+0.01
+    B3 benefit in/out hole:  force_ii=-0.192/-0.179  teacher_sign_tmag=-0.095/-0.124
+
+-> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/exp12/spacing_summary.{csv,md} + per-dataset buckets & plots

@@ -1,0 +1,81 @@
+===== beijing (09:24:55) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[beijing/structured] ep=100 seed=42: M100=74.4027 M20=73.9964 u0.3=75.7362
+    sf=0.3 f=0.75: guided=74.2632 (unguided 75.7362)
+[beijing/structured] ep=100 seed=43: M100=73.8451 M20=73.9085 u0.3=72.9975
+    sf=0.3 f=0.75: guided=73.7335 (unguided 72.9975)
+[beijing/structured] ep=100 seed=44: M100=73.2118 M20=72.8158 u0.3=73.8642
+    sf=0.3 f=0.75: guided=71.3485 (unguided 73.8642)
+[beijing/structured] ep=100 seed=45: M100=76.2130 M20=75.2971 u0.3=75.2243
+    sf=0.3 f=0.75: guided=73.3058 (unguided 75.2243)
+[beijing/structured] ep=100 seed=46: M100=74.1153 M20=72.5121 u0.3=73.9903
+    sf=0.3 f=0.75: guided=71.6230 (unguided 73.9903)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__beijing__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__beijing__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00    74.3625   +0.0000 ± 0.0000
+  100      30%      0.75    72.8548   -1.5077 ± 1.1798
+beijing exit=0
+===== metro (10:28:06) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[metro/structured] ep=100 seed=42: M100=1995.4960 M20=1969.4062 u0.3=1981.5310
+    sf=0.3 f=0.75: guided=1999.6775 (unguided 1981.5310)
+[metro/structured] ep=100 seed=43: M100=1973.9809 M20=1980.8005 u0.3=1980.8791
+    sf=0.3 f=0.75: guided=1968.3431 (unguided 1980.8791)
+[metro/structured] ep=100 seed=44: M100=1969.5509 M20=1990.9363 u0.3=1999.0869
+    sf=0.3 f=0.75: guided=1975.1487 (unguided 1999.0869)
+[metro/structured] ep=100 seed=45: M100=1978.0866 M20=1986.1108 u0.3=2001.3127
+    sf=0.3 f=0.75: guided=2040.4796 (unguided 2001.3127)
+[metro/structured] ep=100 seed=46: M100=1968.4255 M20=1966.8090 u0.3=2044.7683
+    sf=0.3 f=0.75: guided=2048.4942 (unguided 2044.7683)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__metro__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__metro__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00   2001.5156   +0.0000 ± 0.0000
+  100      30%      0.75   2006.4286   +4.9130 ± 22.3012
+metro exit=0
+===== nyse_log (11:38:32) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[nyse_log/structured] ep=100 seed=42: M100=0.5447 M20=0.5168 u0.3=0.5718
+    sf=0.3 f=0.75: guided=0.5099 (unguided 0.5718)
+[nyse_log/structured] ep=100 seed=43: M100=0.5076 M20=0.5457 u0.3=0.4958
+    sf=0.3 f=0.75: guided=0.5352 (unguided 0.4958)
+[nyse_log/structured] ep=100 seed=44: M100=0.4950 M20=0.5977 u0.3=0.5010
+    sf=0.3 f=0.75: guided=0.4717 (unguided 0.5010)
+[nyse_log/structured] ep=100 seed=45: M100=0.4794 M20=0.6772 u0.3=0.4909
+    sf=0.3 f=0.75: guided=0.5484 (unguided 0.4909)
+[nyse_log/structured] ep=100 seed=46: M100=0.5668 M20=0.5253 u0.3=0.6546
+    sf=0.3 f=0.75: guided=0.4887 (unguided 0.6546)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__nyse_log__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__nyse_log__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00     0.5428   +0.0000 ± 0.0000
+  100      30%      0.75     0.5108   -0.0320 ± 0.0799
+nyse_log exit=0
+===== nyse (12:46:02) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[nyse/structured] ep=100 seed=42: M100=10608432.0673 M20=10763627.0576 u0.3=10655995.6374
+    sf=0.3 f=0.75: guided=10879917.0665 (unguided 10655995.6374)
+[nyse/structured] ep=100 seed=43: M100=10632662.0535 M20=11034366.7634 u0.3=10509634.8823
+    sf=0.3 f=0.75: guided=10488738.6330 (unguided 10509634.8823)
+[nyse/structured] ep=100 seed=44: M100=10746784.9949 M20=11867429.7007 u0.3=11878013.8103
+    sf=0.3 f=0.75: guided=12184656.9103 (unguided 11878013.8103)
+[nyse/structured] ep=100 seed=45: M100=10832825.3947 M20=10571141.1959 u0.3=10862487.0865
+    sf=0.3 f=0.75: guided=10935307.4880 (unguided 10862487.0865)
+[nyse/structured] ep=100 seed=46: M100=10677491.9214 M20=10720961.9530 u0.3=11041053.3586
+    sf=0.3 f=0.75: guided=11298373.9373 (unguided 11041053.3586)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__nyse__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__nyse__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00   10989436.9550   +0.0000 ± 0.0000
+  100      30%      0.75   11157398.8070   +167961.8520 ± 122530.1783
+nyse exit=0
+ALL BIG DONE

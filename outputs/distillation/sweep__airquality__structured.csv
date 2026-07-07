@@ -1,0 +1,11 @@
+dataset,mode,epochs,seed,teacher_frac,f_opposite,p_teacher,rmse_M100,rmse_M20,student_frac,f,rmse_unguided,rmse_guided
+airquality,structured,100,42,0.2,0.0,0.5,2.18752,1.73423,0.3,0.0,2.32901,2.32901
+airquality,structured,100,42,0.2,0.0,0.5,2.18752,1.73423,0.3,0.75,2.32901,1.8154
+airquality,structured,100,43,0.2,0.0,0.5,1.97479,1.67288,0.3,0.0,1.86512,1.86512
+airquality,structured,100,43,0.2,0.0,0.5,1.97479,1.67288,0.3,0.75,1.86512,1.83043
+airquality,structured,100,44,0.2,0.0,0.5,1.9361,1.6807,0.3,0.0,1.84288,1.84288
+airquality,structured,100,44,0.2,0.0,0.5,1.9361,1.6807,0.3,0.75,1.84288,1.89219
+airquality,structured,100,45,0.2,0.0,0.5,1.96573,2.39896,0.3,0.0,2.36842,2.36842
+airquality,structured,100,45,0.2,0.0,0.5,1.96573,2.39896,0.3,0.75,2.36842,1.88331
+airquality,structured,100,46,0.2,0.0,0.5,1.7356,2.23119,0.3,0.0,1.71594,1.71594
+airquality,structured,100,46,0.2,0.0,0.5,1.7356,2.23119,0.3,0.75,1.71594,1.7661

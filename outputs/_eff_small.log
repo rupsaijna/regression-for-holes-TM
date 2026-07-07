@@ -1,0 +1,101 @@
+===== autompg (09:11:09) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[autompg/structured] ep=100 seed=42: M100=3.2520 M20=3.1873 u0.3=3.2463
+    sf=0.3 f=0.75: guided=3.2142 (unguided 3.2463)
+[autompg/structured] ep=100 seed=43: M100=3.2902 M20=3.3537 u0.3=3.4920
+    sf=0.3 f=0.75: guided=3.5905 (unguided 3.4920)
+[autompg/structured] ep=100 seed=44: M100=3.4693 M20=3.5788 u0.3=3.3601
+    sf=0.3 f=0.75: guided=3.1270 (unguided 3.3601)
+[autompg/structured] ep=100 seed=45: M100=3.4164 M20=3.0796 u0.3=3.3618
+    sf=0.3 f=0.75: guided=3.6682 (unguided 3.3618)
+[autompg/structured] ep=100 seed=46: M100=3.1545 M20=3.3433 u0.3=3.6353
+    sf=0.3 f=0.75: guided=3.6548 (unguided 3.6353)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__autompg__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__autompg__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00     3.4191   +0.0000 ± 0.0000
+  100      30%      0.75     3.4509   +0.0319 ± 0.1756
+autompg exit=0
+===== realestate (09:11:58) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[realestate/structured] ep=100 seed=42: M100=8.4179 M20=7.6098 u0.3=7.8576
+    sf=0.3 f=0.75: guided=7.7739 (unguided 7.8576)
+[realestate/structured] ep=100 seed=43: M100=8.3503 M20=8.5461 u0.3=9.7033
+    sf=0.3 f=0.75: guided=8.6141 (unguided 9.7033)
+[realestate/structured] ep=100 seed=44: M100=8.1594 M20=8.6214 u0.3=8.0334
+    sf=0.3 f=0.75: guided=8.0973 (unguided 8.0334)
+[realestate/structured] ep=100 seed=45: M100=8.0568 M20=9.2053 u0.3=8.7885
+    sf=0.3 f=0.75: guided=8.4825 (unguided 8.7885)
+[realestate/structured] ep=100 seed=46: M100=8.3504 M20=7.9520 u0.3=8.7264
+    sf=0.3 f=0.75: guided=8.5200 (unguided 8.7264)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__realestate__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__realestate__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00     8.6219   +0.0000 ± 0.0000
+  100      30%      0.75     8.2976   -0.3243 ± 0.4020
+realestate exit=0
+===== mortality (09:12:49) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[mortality/structured] ep=100 seed=42: M100=39.5380 M20=41.5622 u0.3=42.9164
+    sf=0.3 f=0.75: guided=45.6275 (unguided 42.9164)
+[mortality/structured] ep=100 seed=43: M100=35.0639 M20=42.7632 u0.3=43.1193
+    sf=0.3 f=0.75: guided=43.6473 (unguided 43.1193)
+[mortality/structured] ep=100 seed=44: M100=43.5839 M20=37.2002 u0.3=38.0507
+    sf=0.3 f=0.75: guided=38.8065 (unguided 38.0507)
+[mortality/structured] ep=100 seed=45: M100=45.8506 M20=42.1172 u0.3=45.6975
+    sf=0.3 f=0.75: guided=51.1124 (unguided 45.6975)
+[mortality/structured] ep=100 seed=46: M100=40.1196 M20=38.5634 u0.3=34.9228
+    sf=0.3 f=0.75: guided=34.9569 (unguided 34.9228)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__mortality__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__mortality__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00    40.9413   +0.0000 ± 0.0000
+  100      30%      0.75    42.8301   +1.8888 ± 1.9842
+mortality exit=0
+===== bloodfat (09:13:02) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[bloodfat/structured] ep=100 seed=42: M100=103.0026 M20=108.0457 u0.3=96.5602
+    sf=0.3 f=0.75: guided=105.5484 (unguided 96.5602)
+[bloodfat/structured] ep=100 seed=43: M100=98.9132 M20=104.8336 u0.3=119.7008
+    sf=0.3 f=0.75: guided=122.5767 (unguided 119.7008)
+[bloodfat/structured] ep=100 seed=44: M100=99.6327 M20=112.5240 u0.3=131.6072
+    sf=0.3 f=0.75: guided=136.2191 (unguided 131.6072)
+[bloodfat/structured] ep=100 seed=45: M100=99.4098 M20=101.4732 u0.3=108.4615
+    sf=0.3 f=0.75: guided=107.5140 (unguided 108.4615)
+[bloodfat/structured] ep=100 seed=46: M100=92.8629 M20=89.7875 u0.3=104.5120
+    sf=0.3 f=0.75: guided=104.6759 (unguided 104.5120)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__bloodfat__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__bloodfat__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00   112.1684   +0.0000 ± 0.0000
+  100      30%      0.75   115.3068   +3.1385 ± 3.5215
+bloodfat exit=0
+===== airquality (09:13:08) =====
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[airquality/structured] ep=100 seed=42: M100=2.1875 M20=1.7342 u0.3=2.3290
+    sf=0.3 f=0.75: guided=1.8154 (unguided 2.3290)
+[airquality/structured] ep=100 seed=43: M100=1.9748 M20=1.6729 u0.3=1.8651
+    sf=0.3 f=0.75: guided=1.8304 (unguided 1.8651)
+[airquality/structured] ep=100 seed=44: M100=1.9361 M20=1.6807 u0.3=1.8429
+    sf=0.3 f=0.75: guided=1.8922 (unguided 1.8429)
+[airquality/structured] ep=100 seed=45: M100=1.9657 M20=2.3990 u0.3=2.3684
+    sf=0.3 f=0.75: guided=1.8833 (unguided 2.3684)
+[airquality/structured] ep=100 seed=46: M100=1.7356 M20=2.2312 u0.3=1.7159
+    sf=0.3 f=0.75: guided=1.7661 (unguided 1.7159)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__airquality__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__airquality__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+  100      30%      0.00     2.0243   +0.0000 ± 0.0000
+  100      30%      0.75     1.8375   -0.1868 ± 0.2572
+airquality exit=0
+ALL SMALL DONE

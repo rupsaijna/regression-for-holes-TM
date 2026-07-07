@@ -1,0 +1,33 @@
+================================================================================
+PROMPT 1
+================================================================================
+We want to run multiple experiments. The main data being used will be the
+California Housing Dataset. The first experiment will be the baseline. The
+baseline will contain a standard TsetlinMachine implementation of the
+RegressionTM from the library tmu to work on the data and give results. The
+baseline will also contain a standard neural network model on the same data and
+give results. The train and test split for both RegressionTM and NN models will
+be the same. Results returned should be average RMSE over 10, 50 and 100 runs.
+Also, some of the test samples should be plotted into a visualization, where it
+shows the given data and the prediction made by each of the two models. The
+visualization should be possible to save as a png. Save this current prompt into
+prompts.txt, along with prompt number. The models should be saved and the
+program should have the option to load a previously saved model when it is run
+again. The program should also have the option of choosing different slices of
+the test samples for display and visualization. The second program in this
+folder, will run analytics on the data. The analytics I am interested in is the
+average spread of the data, average distance between two data points and
+minimum/maximum distances between data points, all for train set, test set and
+the data as a whole. This means the train and test splits have to be fixed for
+the first program as well. Let the analytics program also calculate how well
+each of the models behave for different spacing between data points. I am trying
+to see if greater spacing between data points leads to poorer learning of the
+regression line by any of the models. Suggest changes and program structure. On
+confirmation, start writing the program.
+
+--- Clarifications added during planning ---
+- Give ALL possible spacing definitions (not just one) so the choice can be made
+  later, and show a visualization of each spacing over a fixed slice of test data
+  alongside the model predictions to make comparison easy.
+- Environment: tmu cannot build on Windows Python 3.14 (no C compiler); run the
+  experiments in WSL Ubuntu (Python 3.10) instead.

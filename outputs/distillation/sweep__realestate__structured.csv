@@ -1,0 +1,11 @@
+dataset,mode,epochs,seed,teacher_frac,f_opposite,p_teacher,rmse_M100,rmse_M20,student_frac,f,rmse_unguided,rmse_guided
+realestate,structured,100,42,0.2,0.0,0.5,8.41793,7.60984,0.3,0.0,7.85762,7.85762
+realestate,structured,100,42,0.2,0.0,0.5,8.41793,7.60984,0.3,0.75,7.85762,7.77386
+realestate,structured,100,43,0.2,0.0,0.5,8.35029,8.54614,0.3,0.0,9.70332,9.70332
+realestate,structured,100,43,0.2,0.0,0.5,8.35029,8.54614,0.3,0.75,9.70332,8.61408
+realestate,structured,100,44,0.2,0.0,0.5,8.15937,8.62143,0.3,0.0,8.03344,8.03344
+realestate,structured,100,44,0.2,0.0,0.5,8.15937,8.62143,0.3,0.75,8.03344,8.09729
+realestate,structured,100,45,0.2,0.0,0.5,8.05682,9.20531,0.3,0.0,8.78849,8.78849
+realestate,structured,100,45,0.2,0.0,0.5,8.05682,9.20531,0.3,0.75,8.78849,8.48251
+realestate,structured,100,46,0.2,0.0,0.5,8.35035,7.95201,0.3,0.0,8.72639,8.72639
+realestate,structured,100,46,0.2,0.0,0.5,8.35035,7.95201,0.3,0.75,8.72639,8.52003

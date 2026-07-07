@@ -1,0 +1,69 @@
+E11 DONE. Verdict: outputs/distillation/exp11/tmag_verdict.md.
+- Teacher-bounded magnitude is a SHARPENER not a universal lever (partly refutes E10):
+  amplifies good teacher (ccpp force_ii_tmag +0.431, best of arc), caps bad teacher
+  (energy sameside_tmag -0.013 ~ no-teacher), but BACKFIRES on marginal teacher
+  (airquality force_ii +0.175 -> force_ii_tmag -0.140).
+- vs FULL (M00): ccpp force_ii_tmag TIES full (70%-data student ~= full-data model);
+  airquality force_ii BEATS full +0.185 but only because full is anomalously bad there
+  (LESS-IS-MORE dataset); california/energy full wins.
+
+NEXT = E12 SPACING/DENSITY (returns to PROMPT 1). SCOPE: exp12_spacing_scope.md.
+Two tiers:
+  A (per-dataset, broad, reuse-heavy): redo density->effectiveness correlation with E8-E11 best
+    modes + M00 less-is-more flag, 12-dataset panel. Reuse experiment11_tmag.py + correlate_eff_density.py.
+  B (per-region, NEW, the crux): spacing_buckets.py -- bucket TEST points by local spacing / distance
+    into the masked hole; per bucket measure |error| (M20/unguided/guided) + teacher benefit.
+    Tests B1 error rises with spacing, B2 does help concentrate in sparse/hole regions.
+TIER B DONE: spacing_buckets.py -> outputs/distillation/exp12/spacing_tierB_verdict.md.
+  B1: error rises with spacing but only as a SPARSEST-DECILE THRESHOLD (weak Spearman; jump in
+      bucket 9). Founding hypothesis holds at the extreme; strongest airquality/energy.
+  B2: benefit vs spacing ~0 -> distillation is GLOBAL/spatially-diffuse, NOT a hole-filler.
+      This mechanism explains the whole arc (accuracy doesn't predict benefit, less-is-more,
+      sharpener-not-fixer). Spacing = difficulty (B1) but NOT where distillation acts (B2): decoupled.
+DOING BOTH (tooling built, py_compile clean):
+(1) B3 hole_dist split -- spacing_buckets.py extended (in_hole = nearer to a REMOVED pt than a
+    surviving one; benefit in/out-hole; dumps <ds>__points.csv). RE-RUN (WSL):
+      ~/regexp-venv/bin/python spacing_buckets.py 2>/dev/null | tee outputs/_exp12b.log
+    Then refresh spacing_tierB_verdict.md with the B3 in/out split.
+(2) Tier A -- experiment11_tmag.py now has --subsample-train. Broad run (WSL), STAGE small->large:
+      ~/regexp-venv/bin/python experiment11_tmag.py --datasets energy autompg realestate mortality \
+        bloodfat ccpp airquality california --out outputs/distillation/exp12_tierA --seeds 4 \
+        2>/dev/null | tee outputs/_exp12a.log
+      (then large: --datasets metro beijing nyse nyse_log --subsample-train 8000 ... --seeds 4)
+    DONE (12 datasets). Verdict: outputs/distillation/exp12_tierA/tierA_verdict.md.
+    HEADLINE CONFIRMED: spc_err_strength vs force_ii_tmag eff_norm = -0.78 (p=0.003); density beats
+    teacher_edge (~0) for every mode. Caveats: het_global_cv was small-panel artifact; some modes
+    track size/dim; tiny-n included. Less-is-more robust on nyse_log/realestate/metro (airquality's
+    was SEED-FRAGILE -- don't cite). Combined E12 synthesis: distillation = GLOBAL reshaping; helps
+    when error NOT spacing-governed, fails when it IS. Both tiers explained by one mechanism.
+
+E12 COMPLETE (Tier A + B). Abstract (abstract.md) updated with the global-reshaping synthesis line.
+FOLLOW-UP #2 DONE: n>=100 subset (correlate_modes_density.py --min-n 100) -> headline tightens for
+  force_ii_tmag (spc_err_strength -0.76 p=0.011 + cluster of spacing metrics). Folded into tierA_verdict.md.
+FOLLOW-UP #1 DONE: B3 hole_dist split (spacing_tierB_verdict.md updated). On the GOOD teacher (ccpp)
+  benefit is ~1.5-2x HIGHER in carved holes -> genuine localized hole-filling that B2 missed; ABSENT
+  for weak/bad teachers. Refines "global reshaping" -> "predominantly global, good teacher fills holes."
+  abstract.md UPDATED with the per-test-point sentence (largely global; good teacher repairs carved regions).
+E12 + both follow-ups COMPLETE. Abstract final.
+PAPER FIRST PASS DONE: paper/ LaTeX folder (main.tex + sections/*.tex + references.bib) -- full draft, 11 sections, expands abstract.md.
+  IEEE conference format integrated: documentclass[conference]{IEEEtran}; IEEEtran.cls (V1.8b) +
+  IEEEtran.bst VENDORED into paper/ from CTAN (self-contained, no system TeX needed). Wide tables ->
+  table*; \IEEEauthorblock author + IEEEkeywords; cite pkg + \bibliographystyle{IEEEtran}.
+  NOT YET COMPILED -- no pdflatex on Windows or WSL here; build with latexmk -pdf main.tex where TeX exists.
+  OVERLEAF: paper_overleaf.zip (repo root, 306KB) = self-contained upload (main.tex at zip root,
+  figures bundled, graphicspath -> figures/). Overleaf: New Project > Upload Project > that zip.
+  Copied error/benefit_vs_spacing__ccpp.png + modes_density_heatmap__eff_norm.png into paper/figures/.
+  GITHUB: paper pushed to https://github.com/rupsaijna/regression-for-holes-TM.git (branch main,
+  LaTeX at REPO ROOT: main.tex + sections/ + figures/ + vendored IEEEtran.cls/.bst + .gitignore).
+  Commit a70ed24. README leads with Overleaf GitHub-sync steps. FINAL STEP IS MANUAL (browser):
+  Overleaf > New Project > Import from GitHub > rupsaijna/regression-for-holes-TM (premium feature;
+  else New Project > Upload Project with a zip). Push used the RegressionExperiment repo's paper/ as
+  source; the GH repo is paper-only (LaTeX at root).
+  Sections: Intro / Background (RegressionTM, Type I/II) / Method (mechanisms + masked protocol) /
+  R4 sharpener-not-fixer (E8+E11) / R5 feedback-type+stability (E9-E10) / R6 teacher-edge != benefit /
+  R7 vs full-data M00 (less-is-more) / R8 spacing governs (Tier A+B) / Discussion (unified mechanism) /
+  Limitations / Conclusion. All numbers pulled from exp8-12 verdicts. NEXT: related-work section,
+  intro citations, figure inserts (error/benefit_vs_spacing PNGs, heatmap), venue-specific trim.
+OTHER OPEN (if continuing): x vs (x,y)-joint spacing; input-space vs joint spacing definitions.
+Existing tooling: density_metrics.py, correlate_eff_density.py, common/metrics.py spacing prims,
+spacing_distribution.py, data_descriptors.py, 12 sweep__<ds>__structured.csv.

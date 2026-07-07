@@ -1,0 +1,5 @@
+dataset,n_points,help_in_hole,help_surviving,frac_in_hole
+ccpp,9570,0.03074,0.02441,0.3043
+california,20640,-0.01292,-0.01567,0.3097
+energy,770,-0.00503,-0.0044,0.2597
+airquality,6945,0.00391,0.01793,0.3178

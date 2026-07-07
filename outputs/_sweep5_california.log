@@ -1,0 +1,106 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+[california/structured] ep=30 seed=42: M100=0.6241 M20=0.6407 u0.3=0.6399 u0.5=0.6502
+    sf=0.3 f=0.5: guided=0.6371 (unguided 0.6399)
+    sf=0.3 f=0.75: guided=0.6422 (unguided 0.6399)
+    sf=0.3 f=1.0: guided=0.6534 (unguided 0.6399)
+    sf=0.5 f=0.5: guided=0.6637 (unguided 0.6502)
+    sf=0.5 f=0.75: guided=0.6728 (unguided 0.6502)
+    sf=0.5 f=1.0: guided=0.6939 (unguided 0.6502)
+[california/structured] ep=30 seed=43: M100=0.6325 M20=0.6401 u0.3=0.6307 u0.5=0.6457
+    sf=0.3 f=0.5: guided=0.6399 (unguided 0.6307)
+    sf=0.3 f=0.75: guided=0.6415 (unguided 0.6307)
+    sf=0.3 f=1.0: guided=0.6341 (unguided 0.6307)
+    sf=0.5 f=0.5: guided=0.6424 (unguided 0.6457)
+    sf=0.5 f=0.75: guided=0.6435 (unguided 0.6457)
+    sf=0.5 f=1.0: guided=0.6430 (unguided 0.6457)
+[california/structured] ep=30 seed=44: M100=0.6332 M20=0.6305 u0.3=0.6323 u0.5=0.6403
+    sf=0.3 f=0.5: guided=0.6373 (unguided 0.6323)
+    sf=0.3 f=0.75: guided=0.6608 (unguided 0.6323)
+    sf=0.3 f=1.0: guided=0.6817 (unguided 0.6323)
+    sf=0.5 f=0.5: guided=0.6450 (unguided 0.6403)
+    sf=0.5 f=0.75: guided=0.6488 (unguided 0.6403)
+    sf=0.5 f=1.0: guided=0.6859 (unguided 0.6403)
+[california/structured] ep=30 seed=45: M100=0.6414 M20=0.6279 u0.3=0.6347 u0.5=0.6489
+    sf=0.3 f=0.5: guided=0.6388 (unguided 0.6347)
+    sf=0.3 f=0.75: guided=0.6472 (unguided 0.6347)
+    sf=0.3 f=1.0: guided=0.6297 (unguided 0.6347)
+    sf=0.5 f=0.5: guided=0.6527 (unguided 0.6489)
+    sf=0.5 f=0.75: guided=0.6654 (unguided 0.6489)
+    sf=0.5 f=1.0: guided=0.6820 (unguided 0.6489)
+[california/structured] ep=30 seed=46: M100=0.6378 M20=0.6357 u0.3=0.6267 u0.5=0.6435
+    sf=0.3 f=0.5: guided=0.6294 (unguided 0.6267)
+    sf=0.3 f=0.75: guided=0.6362 (unguided 0.6267)
+    sf=0.3 f=1.0: guided=0.6461 (unguided 0.6267)
+    sf=0.5 f=0.5: guided=0.6615 (unguided 0.6435)
+    sf=0.5 f=0.75: guided=0.6661 (unguided 0.6435)
+    sf=0.5 f=1.0: guided=0.6753 (unguided 0.6435)
+[california/structured] ep=30 seed=47: M100=0.6278 M20=0.6367 u0.3=0.6396 u0.5=0.6437
+    sf=0.3 f=0.5: guided=0.6471 (unguided 0.6396)
+    sf=0.3 f=0.75: guided=0.6395 (unguided 0.6396)
+    sf=0.3 f=1.0: guided=0.6627 (unguided 0.6396)
+    sf=0.5 f=0.5: guided=0.6445 (unguided 0.6437)
+    sf=0.5 f=0.75: guided=0.6549 (unguided 0.6437)
+    sf=0.5 f=1.0: guided=0.6701 (unguided 0.6437)
+[california/structured] ep=100 seed=42: M100=0.6434 M20=0.6316 u0.3=0.6397 u0.5=0.6673
+    sf=0.3 f=0.5: guided=0.6354 (unguided 0.6397)
+    sf=0.3 f=0.75: guided=0.6395 (unguided 0.6397)
+    sf=0.3 f=1.0: guided=0.6433 (unguided 0.6397)
+    sf=0.5 f=0.5: guided=0.6629 (unguided 0.6673)
+    sf=0.5 f=0.75: guided=0.6768 (unguided 0.6673)
+    sf=0.5 f=1.0: guided=0.6958 (unguided 0.6673)
+[california/structured] ep=100 seed=43: M100=0.6213 M20=0.6509 u0.3=0.6344 u0.5=0.6521
+    sf=0.3 f=0.5: guided=0.6347 (unguided 0.6344)
+    sf=0.3 f=0.75: guided=0.6359 (unguided 0.6344)
+    sf=0.3 f=1.0: guided=0.6357 (unguided 0.6344)
+    sf=0.5 f=0.5: guided=0.6482 (unguided 0.6521)
+    sf=0.5 f=0.75: guided=0.6415 (unguided 0.6521)
+    sf=0.5 f=1.0: guided=0.6577 (unguided 0.6521)
+[california/structured] ep=100 seed=44: M100=0.6284 M20=0.6373 u0.3=0.6333 u0.5=0.6445
+    sf=0.3 f=0.5: guided=0.6304 (unguided 0.6333)
+    sf=0.3 f=0.75: guided=0.6264 (unguided 0.6333)
+    sf=0.3 f=1.0: guided=0.6345 (unguided 0.6333)
+    sf=0.5 f=0.5: guided=0.6345 (unguided 0.6445)
+    sf=0.5 f=0.75: guided=0.6362 (unguided 0.6445)
+    sf=0.5 f=1.0: guided=0.6433 (unguided 0.6445)
+[california/structured] ep=100 seed=45: M100=0.6208 M20=0.6286 u0.3=0.6260 u0.5=0.6358
+    sf=0.3 f=0.5: guided=0.6304 (unguided 0.6260)
+    sf=0.3 f=0.75: guided=0.6374 (unguided 0.6260)
+    sf=0.3 f=1.0: guided=0.6473 (unguided 0.6260)
+    sf=0.5 f=0.5: guided=0.6282 (unguided 0.6358)
+    sf=0.5 f=0.75: guided=0.6899 (unguided 0.6358)
+    sf=0.5 f=1.0: guided=0.7020 (unguided 0.6358)
+[california/structured] ep=100 seed=46: M100=0.6242 M20=0.6284 u0.3=0.6326 u0.5=0.6459
+    sf=0.3 f=0.5: guided=0.6293 (unguided 0.6326)
+    sf=0.3 f=0.75: guided=0.6400 (unguided 0.6326)
+    sf=0.3 f=1.0: guided=0.6531 (unguided 0.6326)
+    sf=0.5 f=0.5: guided=0.6508 (unguided 0.6459)
+    sf=0.5 f=0.75: guided=0.6495 (unguided 0.6459)
+    sf=0.5 f=1.0: guided=0.6744 (unguided 0.6459)
+[california/structured] ep=100 seed=47: M100=0.6486 M20=0.6284 u0.3=0.6328 u0.5=0.6472
+    sf=0.3 f=0.5: guided=0.6281 (unguided 0.6328)
+    sf=0.3 f=0.75: guided=0.6306 (unguided 0.6328)
+    sf=0.3 f=1.0: guided=0.6397 (unguided 0.6328)
+    sf=0.5 f=0.5: guided=0.6369 (unguided 0.6472)
+    sf=0.5 f=0.75: guided=0.6490 (unguided 0.6472)
+    sf=0.5 f=1.0: guided=0.6659 (unguided 0.6472)
+
+CSV -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__california__structured.csv
+plot -> /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/sweep__california__structured.png
+
+  ep  studentMask    f    guidedRMSE   Δ(g-u) mean±std
+   30      30%      0.00     0.6340   +0.0000 ± 0.0000
+   30      30%      0.50     0.6383   +0.0043 ± 0.0038
+   30      30%      0.75     0.6446   +0.0106 ± 0.0092
+   30      30%      1.00     0.6513   +0.0173 ± 0.0172
+   30      50%      0.00     0.6454   +0.0000 ± 0.0000
+   30      50%      0.50     0.6516   +0.0062 ± 0.0073
+   30      50%      0.75     0.6586   +0.0132 ± 0.0086
+   30      50%      1.00     0.6750   +0.0296 ± 0.0159
+  100      30%      0.00     0.6331   +0.0000 ± 0.0000
+  100      30%      0.50     0.6314   -0.0017 ± 0.0032
+  100      30%      0.75     0.6350   +0.0019 ± 0.0060
+  100      30%      1.00     0.6423   +0.0092 ± 0.0085
+  100      50%      0.00     0.6488   +0.0000 ± 0.0000
+  100      50%      0.50     0.6436   -0.0052 ± 0.0051
+  100      50%      0.75     0.6572   +0.0084 ± 0.0216
+  100      50%      1.00     0.6732   +0.0244 ± 0.0217

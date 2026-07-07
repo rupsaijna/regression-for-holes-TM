@@ -1,0 +1,35 @@
+[tmu LOCAL BUILD] vanilla_regressor_V4 loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor_v4.py
+
+=== ccpp: 7654 train (FULL) / 1914 test ===
+  seed 42: full RMSE = 4.7855
+  seed 43: full RMSE = 4.5344
+  seed 44: full RMSE = 4.5766
+  seed 45: full RMSE = 5.1546
+  seed 46: full RMSE = 4.5084
+  seed 47: full RMSE = 4.9872
+
+=== airquality: 5552 train (FULL) / 1389 test ===
+  seed 42: full RMSE = 1.6162
+  seed 43: full RMSE = 1.8500
+  seed 44: full RMSE = 1.5597
+  seed 45: full RMSE = 1.6022
+  seed 46: full RMSE = 1.7655
+  seed 47: full RMSE = 2.0764
+
+=== california: 16512 train (FULL) / 4128 test ===
+  seed 42: full RMSE = 0.6081
+  seed 43: full RMSE = 0.6080
+  seed 44: full RMSE = 0.6198
+  seed 45: full RMSE = 0.6124
+  seed 46: full RMSE = 0.6130
+  seed 47: full RMSE = 0.6105
+
+=== energy: 614 train (FULL) / 154 test ===
+  seed 42: full RMSE = 1.1648
+  seed 43: full RMSE = 0.9038
+  seed 44: full RMSE = 0.8780
+  seed 45: full RMSE = 1.0069
+  seed 46: full RMSE = 0.9125
+  seed 47: full RMSE = 0.8849
+
+Wrote /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/outputs/distillation/exp11/full_baseline.csv

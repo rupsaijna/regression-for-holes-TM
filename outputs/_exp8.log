@@ -1,0 +1,48 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+
+=== ccpp: 7654 train / 1914 test ===
+  seed 42: ung=5.2555 | uniform:+0.165 adapt_disagree:+0.298 adapt_error:+0.540
+  seed 43: ung=5.2011 | uniform:+0.626 adapt_disagree:-0.004 adapt_error:+0.503
+  seed 44: ung=4.8960 | uniform:+0.234 adapt_disagree:+0.184 adapt_error:+0.198
+  seed 45: ung=5.5728 | uniform:+0.419 adapt_disagree:+0.830 adapt_error:+0.699
+  seed 46: ung=5.5119 | uniform:+0.893 adapt_disagree:+0.788 adapt_error:+0.892
+  seed 47: ung=4.7769 | uniform:-0.179 adapt_disagree:-0.165 adapt_error:+0.145
+
+=== airquality: 5552 train / 1389 test ===
+  seed 42: ung=1.7011 | uniform:-0.312 adapt_disagree:-0.324 adapt_error:-0.286
+  seed 43: ung=1.7238 | uniform:+0.269 adapt_disagree:+0.331 adapt_error:+0.018
+  seed 44: ung=1.7426 | uniform:+0.198 adapt_disagree:+0.035 adapt_error:+0.364
+  seed 45: ung=1.8177 | uniform:+0.145 adapt_disagree:+0.043 adapt_error:+0.446
+  seed 46: ung=1.7991 | uniform:+0.066 adapt_disagree:+0.267 adapt_error:+0.149
+  seed 47: ung=1.6290 | uniform:+0.099 adapt_disagree:+0.224 adapt_error:+0.190
+
+=== california: 16512 train / 4128 test ===
+  seed 42: ung=0.6262 | uniform:-0.023 adapt_disagree:-0.050 adapt_error:-0.058
+  seed 43: ung=0.6338 | uniform:-0.023 adapt_disagree:-0.013 adapt_error:-0.097
+  seed 44: ung=0.6133 | uniform:-0.019 adapt_disagree:-0.026 adapt_error:-0.033
+  seed 45: ung=0.6227 | uniform:-0.017 adapt_disagree:-0.021 adapt_error:-0.041
+  seed 46: ung=0.6208 | uniform:+0.006 adapt_disagree:-0.025 adapt_error:-0.078
+  seed 47: ung=0.6123 | uniform:-0.004 adapt_disagree:-0.036 adapt_error:-0.064
+
+=== energy: 614 train / 154 test ===
+  seed 42: ung=1.1572 | uniform:-0.052 adapt_disagree:-0.287 adapt_error:-0.390
+  seed 43: ung=1.1344 | uniform:-0.071 adapt_disagree:-0.431 adapt_error:-0.429
+  seed 44: ung=1.1384 | uniform:+0.136 adapt_disagree:+0.052 adapt_error:+0.003
+  seed 45: ung=1.4090 | uniform:+0.019 adapt_disagree:-0.626 adapt_error:-0.478
+  seed 46: ung=0.9990 | uniform:-0.309 adapt_disagree:-0.280 adapt_error:-0.488
+  seed 47: ung=1.4947 | uniform:-0.093 adapt_disagree:-0.094 adapt_error:-0.448
+
+===== SUMMARY (impr = unguided - guided RMSE; gain = adaptive - uniform, paired) =====
+  dataset     method          mean_impr      t gain_vs_uni  gain_t
+  ccpp        uniform           +0.3596  +2.57     +0.0000       -
+  ccpp        adapt_disagree    +0.3220  +2.11     -0.0376   -0.29
+  ccpp        adapt_error       +0.4964  +4.64     +0.1368    1.72
+  airquality  uniform           +0.0776  +1.02     +0.0000       -
+  airquality  adapt_disagree    +0.0961  +1.08     +0.0185    0.36
+  airquality  adapt_error       +0.1469  +1.51     +0.0693    1.01
+  california  uniform           -0.0134  -3.01     +0.0000       -
+  california  adapt_disagree    -0.0286  -5.95     -0.0152   -2.37
+  california  adapt_error       -0.0619  -7.08     -0.0485   -4.61
+  energy      uniform           -0.0616  -1.12     +0.0000       -
+  energy      adapt_disagree    -0.2774  -3.11     -0.2159   -2.26
+  energy      adapt_error       -0.3718  -5.34     -0.3102   -6.25

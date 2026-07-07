@@ -1,14 +1,36 @@
-# LaTeX build artifacts
-*.aux
-*.bbl
-*.blg
-*.log
-*.out
-*.toc
-*.lof
-*.lot
-*.fls
-*.fdb_latexmk
-*.synctex.gz
-*.pdf
-main.pdf
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.so
+*.pyd
+.venv/
+venv/
+env/
+
+# --- Data & generated artifacts (regenerable / large; not tracked) ---
+datasets/
+saved_models/
+splits/
+*.zip
+
+# --- Vendored tmu build products (source is tracked, build output is not) ---
+tmu/build/
+tmu/.git/
+
+# --- LaTeX build artifacts ---
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/main.pdf
+
+# --- Editor / OS ---
+.claude/
+.DS_Store
+Thumbs.db

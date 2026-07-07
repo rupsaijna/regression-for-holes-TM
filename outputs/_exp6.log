@@ -1,0 +1,55 @@
+[tmu LOCAL BUILD] vanilla_regressor loaded from: /mnt/c/Users/Trshant/Rupsa/TMExperiments/RegressionExperiment/tmu/tmu/models/regression/vanilla_regressor.py
+
+=== energy: 614 train / 154 test ===
+  ref test RMSE  bigTM=1.2858  nn=1.0892  ens=0.8426
+  seed 42: base=1.1648 | A_self=+0.210 A_labels=+0.312 B_oof=+0.209 C_ens=+0.245 D_bigTM=+0.335 D_nn=+0.228
+  seed 43: base=0.9038 | A_self=-0.012 A_labels=-0.019 B_oof=+0.084 C_ens=-0.106 D_bigTM=+0.154 D_nn=+0.046
+  seed 44: base=0.8780 | A_self=-0.072 A_labels=+0.001 B_oof=-0.075 C_ens=-0.123 D_bigTM=-0.054 D_nn=-0.017
+  seed 45: base=1.0069 | A_self=+0.078 A_labels=+0.132 B_oof=+0.081 C_ens=+0.138 D_bigTM=+0.108 D_nn=+0.201
+  seed 46: base=0.9125 | A_self=+0.030 A_labels=-0.002 B_oof=-0.107 C_ens=+0.014 D_bigTM=-0.138 D_nn=-0.011
+  seed 47: base=0.8849 | A_self=-0.032 A_labels=-0.085 B_oof=+0.047 C_ens=+0.060 D_bigTM=+0.103 D_nn=-0.240
+  seed 48: base=0.8678 | A_self=+0.002 A_labels=-0.000 B_oof=-0.100 C_ens=-0.062 D_bigTM=+0.073 D_nn=-0.027
+  seed 49: base=0.8964 | A_self=+0.033 A_labels=-0.062 B_oof=-0.022 C_ens=+0.103 D_bigTM=+0.016 D_nn=-0.029
+
+=== ccpp: 7654 train / 1914 test ===
+  ref test RMSE  bigTM=13.4516  nn=3.8325  ens=4.8208
+  seed 42: base=4.7855 | A_self=+0.082 A_labels=+0.121 B_oof=+0.192 C_ens=+0.168 D_bigTM=+0.023 D_nn=-0.059
+  seed 43: base=4.5344 | A_self=-0.002 A_labels=-0.285 B_oof=-0.140 C_ens=+0.049 D_bigTM=-0.111 D_nn=-0.004
+  seed 44: base=4.5766 | A_self=-0.246 A_labels=+0.005 B_oof=+0.104 C_ens=+0.048 D_bigTM=-0.137 D_nn=-0.685
+  seed 45: base=5.1546 | A_self=+0.530 A_labels=+0.580 B_oof=+0.678 C_ens=+0.223 D_bigTM=+0.529 D_nn=+0.428
+  seed 46: base=4.5084 | A_self=-0.469 A_labels=-0.177 B_oof=-0.246 C_ens=-0.199 D_bigTM=-0.498 D_nn=-0.151
+  seed 47: base=4.9872 | A_self=+0.059 A_labels=+0.404 B_oof=+0.359 C_ens=+0.018 D_bigTM=+0.362 D_nn=+0.178
+  seed 48: base=5.1916 | A_self=+0.529 A_labels=+0.648 B_oof=+0.508 C_ens=+0.633 D_bigTM=+0.235 D_nn=+0.127
+  seed 49: base=4.6339 | A_self=-0.299 A_labels=-0.032 B_oof=-0.150 C_ens=+0.041 D_bigTM=-0.176 D_nn=-0.129
+
+=== california: 16512 train / 4128 test ===
+  ref test RMSE  bigTM=1.0511  nn=0.5151  ens=0.6073
+  seed 42: base=0.6081 | A_self=-0.009 A_labels=-0.008 B_oof=-0.005 C_ens=-0.010 D_bigTM=-0.005 D_nn=-0.011
+  seed 43: base=0.6080 | A_self=-0.001 A_labels=-0.004 B_oof=-0.004 C_ens=-0.017 D_bigTM=-0.015 D_nn=-0.010
+  seed 44: base=0.6198 | A_self=+0.008 A_labels=+0.005 B_oof=+0.009 C_ens=+0.008 D_bigTM=+0.002 D_nn=+0.000
+  seed 45: base=0.6124 | A_self=-0.007 A_labels=-0.002 B_oof=-0.005 C_ens=-0.002 D_bigTM=-0.028 D_nn=-0.006
+  seed 46: base=0.6130 | A_self=-0.007 A_labels=-0.014 B_oof=-0.008 C_ens=-0.002 D_bigTM=-0.037 D_nn=-0.023
+  seed 47: base=0.6104 | A_self=-0.002 A_labels=+0.004 B_oof=+0.001 C_ens=-0.001 D_bigTM=-0.003 D_nn=-0.004
+  seed 48: base=0.6257 | A_self=+0.008 A_labels=-0.004 B_oof=+0.014 C_ens=+0.011 D_bigTM=-0.032 D_nn=+0.008
+  seed 49: base=0.6173 | A_self=-0.005 A_labels=-0.004 B_oof=+0.003 C_ens=+0.007 D_bigTM=-0.007 D_nn=-0.003
+
+===== SUMMARY (paired improvement = base - guided, >0 helps) =====
+  dataset      method        mean     std   win      t  works
+  energy       A_self     +0.0297  0.0801  0.62  +1.05  ~ns
+  energy       A_labels   +0.0345  0.1210  0.38  +0.81  ~ns
+  energy       B_oof      +0.0146  0.1032  0.50  +0.40  ~ns
+  energy       C_ens      +0.0335  0.1196  0.62  +0.79  ~ns
+  energy       D_bigTM    +0.0746  0.1327  0.75  +1.59  ~ns
+  energy       D_nn       +0.0190  0.1376  0.38  +0.39  ~ns
+  ccpp         A_self     +0.0230  0.3421  0.50  +0.19  ~ns
+  ccpp         A_labels   +0.1582  0.3255  0.62  +1.37  ~ns
+  ccpp         B_oof      +0.1633  0.3131  0.62  +1.47  ~ns
+  ccpp         C_ens      +0.1226  0.2249  0.88  +1.54  ~ns
+  ccpp         D_bigTM    +0.0282  0.3101  0.50  +0.26  ~ns
+  ccpp         D_nn       -0.0370  0.3025  0.38  -0.35  ~ns
+  california   A_self     -0.0019  0.0062  0.25  -0.86  ~ns
+  california   A_labels   -0.0035  0.0056  0.25  -1.75  ~ns
+  california   B_oof      +0.0006  0.0072  0.50  +0.25  ~ns
+  california   C_ens      -0.0006  0.0087  0.38  -0.21  ~ns
+  california   D_bigTM    -0.0156  0.0137  0.12  -3.21  hurts
+  california   D_nn       -0.0061  0.0085  0.25  -2.04  hurts
