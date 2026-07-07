@@ -1,15 +1,61 @@
-\section{Limitations}
+\section{Limitations and Future Work}
 \label{sec:limitations}
 
-Several caveats bound the claims above. The per-region analysis rests on four anchor
-datasets, and energy's spacing is partly degenerate (discrete features collapse the
-deciles). The strong, robust dataset-level coupling is specifically \texttt{force\_ii\_tmag};
-other modes are directionally consistent but weaker at $n=10$--$12$, and $p$-values are
-uncorrected over many metric pairings, so some correlations partly reflect dataset
-size/dimensionality rather than spacing per se. The teacher-edge correlations use $n=4$
-anchor datasets and are not statistically significant. The ``less-is-more'' phenomenon is
-robust only on a few heterogeneous datasets (\texttt{nyse\_log}, \texttt{realestate},
-\texttt{metro}); airquality's instance is seed-fragile and should not be cited as the
-canonical example. Finally, all results are obtained within the masked-distillation
-protocol using nested structured $k$-NN holes; other scarcity structures may behave
-differently.
+\subsection{Limitations}
+
+\paragraph{Statistical power and panel size.}
+The per-region analysis rests on four anchor datasets, and energy's spacing is partly
+degenerate (discrete features collapse the deciles). The dataset-level correlations use
+ten to twelve datasets with $p$-values uncorrected over many metric pairings, so some
+associations partly reflect dataset size or dimensionality rather than spacing per se. The
+strong, robust coupling is specifically \texttt{force\_ii\_tmag}; the other modes are
+directionally consistent but weaker at this sample size. The teacher-edge correlations use
+only the four anchor datasets and are not statistically significant. The ``less-is-more''
+phenomenon is robust on just a few heterogeneous datasets (\texttt{nyse\_log},
+\texttt{realestate}, \texttt{metro}); airquality's instance is seed-fragile and should not
+be treated as canonical.
+
+\paragraph{Protocol and configuration scope.}
+All results are obtained within one masked-distillation protocol---nested structured
+$k$-NN holes with a fixed teacher (80\% kept) and student (70\% kept)---so other scarcity
+structures, mask fractions, or nesting depths may behave differently. The teacher is a
+single frozen model rather than an ensemble, and the core hyperparameters ($T$, clause
+count, specificity, blend factor $f$, teacher-firing probability $p_{\text{teacher}}$, and
+epoch budget) are held fixed rather than swept, so the reported effect sizes are specific
+to this operating point.
+
+\paragraph{Mechanism and measurement scope.}
+The mechanisms act on the per-sample error sign and magnitude; we did not explore
+scheduling $p_{\text{teacher}}$ over training, per-region teacher trust, or combinations of
+modes. Our spacing metrics are computed in input (feature) space, and \texttt{spc\_err\_strength}
+is a derived heuristic rather than a first-principles quantity. Finally, while the
+clause-level feedback makes the mechanism inspectable, our interpretability claims are
+qualitative: we did not quantify which clauses or literals the teacher actually changes.
+
+\subsection{Future Work}
+
+Several directions follow directly from these limitations.
+
+\begin{itemize}
+  \item \textbf{Spacing definitions.} Separate input-space spacing from joint
+    input--target $(x,y)$ spacing to pin down the operative variable, and compare
+    alternative density and heterogeneity measures against \texttt{spc\_err\_strength}.
+  \item \textbf{Broader, more rigorous evaluation.} Extend the panel and apply
+    multiplicity-corrected statistics to test whether the density--benefit law holds
+    across all modes, not only \texttt{force\_ii\_tmag}.
+  \item \textbf{Scarcity structures.} Test random, adversarial, class-imbalanced, and
+    out-of-support (extrapolation) holes, and vary the mask fraction and nesting depth, to
+    map how the global-reshaping-plus-local-repair account depends on how data is removed.
+  \item \textbf{Teacher design and gating.} Explore teacher ensembles, self-distillation,
+    and iterative teacher--student rounds; and, since accuracy does not predict benefit,
+    build a data-geometry gate---for example a spacing-based go/no-go rule---that decides
+    when to distil at all.
+  \item \textbf{Mechanism extensions.} Study scheduled or learned $p_{\text{teacher}}$,
+    per-region teacher trust, and combinations of teacher-bounded magnitude with adaptive
+    triggering, and port the mechanisms to the weighted and convolutional variants and to
+    classification Tsetlin Machines.
+  \item \textbf{Interpretability and theory.} Quantify what the teacher transfers at the
+    clause level---turning the ``inspectable'' claim into measurements---and develop a
+    theoretical account of why global reshaping dominates and when localized in-hole repair
+    emerges from the Type~I/Type~II dynamics.
+\end{itemize}
